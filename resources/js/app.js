@@ -25,7 +25,7 @@ Vue.prototype.$auth = new Auth(window.user);
 Vue.component('admin', require('./components/Admin.vue').default);
 
 import Dashboard from './pages/Dashboard'
-// import Settings from './pages/Settings'
+import AddNewUser from './pages/users/AddNewUser'
 // import Users from './pages/Users'
 // import Roles from './pages/Roles'
 // import Permissions from './pages/Permissions'
@@ -36,10 +36,10 @@ const routes = [
       path: '/admin/',
       component: Dashboard
   },
-  // {
-  //     path: '/admin/users',
-  //     component: Users
-  // },
+  {
+      path: '/admin/addnewusers',
+      component: AddNewUser
+  },
   // {
   //     path: '/admin/roles',
   //     component: Roles
