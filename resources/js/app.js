@@ -11,7 +11,10 @@ import Vue from 'vue/dist/vue';
 // import Vuetify from 'vuetify'
 import VueRouter from 'vue-router'
 import { BootstrapVue } from 'bootstrap-vue'
+import 'vue-loaders/dist/vue-loaders.css';
+import VueLoaders from 'vue-loaders';
 
+Vue.use(VueLoaders);
 Vue.use(BootstrapVue)
 
 

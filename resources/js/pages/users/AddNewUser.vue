@@ -1,57 +1,99 @@
 <template>
 <div>
+<div class="pageheader">
+    <h2>Add New User</h2>
+</div>
+<div class="pagecontent">
+                <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                      <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                  </p>
+                <form v-on:submit.prevent="create">
 
-<form method="POST" action="">
+                    <div class="form-group row">
+                        <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control " name="name" value="" required autocomplete="name" autofocus>
-                            </div>
+                        <div class="col-md-6">
+                            <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="" required autocomplete="email">
-                            </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                        <div class="col-md-6">
+                            <input id="email" type="email" class="form-control" name="email" value="" v-model="form.email">
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
-                            </div>
+                        <div class="col-md-6">
+                            <input id="password" type="password" class="form-control" name="password" v-model="form.password">
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                    <div class="form-group row">
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                        <div class="col-md-6">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" v-model="form.password_confirmation">
                         </div>
+                    </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="button" class="btn btn-primary">
-                                   Add New
-                                </button>
-                            </div>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="button" v-on:click="create" class="btn btn-primary">
+                               Add New
+                            </button>
                         </div>
-                    </form>
+                    </div>
+                </form>
+    </div>
+    <vue-loaders-ball-beat color="red" scale="1" v-if="showloader"></vue-loaders-ball-beat>                
 </div>
 </template>
 
 <script>
+import {createusers}  from '../../api';
+export default {
+name: 'AddNewUser',
+ data() {
+    return{
+        errors: [],
+        form: {
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: ''
+            },
+         showloader:false,   
+    }
+  },
+ methods: {
+        async create(e){
 
-  export default {
-    name: 'AddNewUser',
-  };
+          if (!this.form.name) {
+            this.errors.push('Name required.');
+          }
+          if (!this.form.email) {
+            this.errors.push('Email required.');
+          }
+
+          if(this.errors.length){
+            return false;
+          }
+
+            this.showloader = true;
+            const { data } = createusers(this.form);
+            console.log(data);
+        }
+    },     
+}
 </script>
 
 <style scoped>
 
-</style>
+</style>    

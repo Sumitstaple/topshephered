@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Portal API's
+
+
+Route::post('/portal/createusers', [App\Http\Controllers\PortalApiController::class, 'createusers']);
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

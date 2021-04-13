@@ -33,3 +33,34 @@
     font-size: 35px;
     text-transform: capitalize;
 }
+.pageheader {
+    padding: 20px;
+    margin-bottom: 50px;
+    background: #efefef;
+}
+.mb-4, .my-4 {
+    margin-bottom: 0 !important;
+}
+.col-sm-9 {
+    padding-left: 0;
+}
+.vue-loaders.ball-beat {
+    background: #4e73df47;
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    text-align: center;
+    padding-top: 20%;
+    top: 0;
+    bottom: 0;
+}
+footer.container-fluid {
+    text-align: center;
+    padding: 10px 0px;
+    line-height: 50px;
+    background: #4e73df;
+    color: #fff;
+}
+.container-fluid {
+    padding: 0;
+}

@@ -1,57 +1,52 @@
 <template>
-  <v-toolbar app fixed clipped-left>
-    <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-    <v-toolbar-title>Laravel Vue Admin</v-toolbar-title>
-    <v-spacer></v-spacer>
+ <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow topheader">
 
-    <v-menu
-      offset-y
-      origin="center center"
-      class="elelvation-1"
-      :nudge-bottom="14"
-      transition="scale-transition"
-    >
-      <v-btn @click="markAsRead" icon flat slot="activator">
-        <v-badge color="red" overlap>
-          <span slot="badge">{{unreadNotifications.length}}</span>
-          <v-icon medium>notifications</v-icon>
-        </v-badge>
-      </v-btn>
+                    <div class="top-header-heading">
+                        <a href="#">topshephered</a>
+                    </div>
 
-      <v-list>
-        <v-list-tile :class="{'green': notification.read_at==null}" @click="markAsRead" v-for="notification in allNotifications" :key="notification.id">
-          <v-list-tile-content>
-            <v-list-tile-title>{{notification.data.createdUser.name}} has just registered on {{notification.created_at}}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
-    <v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
-      <v-btn icon large flat slot="activator">
-        <v-avatar size="30px">
-          <img src="https://via.placeholder.com/150" alt="Michael Wang">
-        </v-avatar>
-      </v-btn>
-      <v-list class="pa-0">
-        <v-list-tile ripple="ripple" rel="noopener">
-          <v-list-tile-content>
-            <v-list-tile-title>{{user.name}}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-      <v-list class="pa-0">
-        <v-list-tile @click="logout" ripple="ripple" rel="noopener">
-          <v-list-tile-action>
-            <v-icon>account_circle</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Logout</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
-  </v-toolbar>
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
 </template>
 
 

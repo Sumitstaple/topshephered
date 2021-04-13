@@ -1,70 +1,99 @@
 <template>
-  <v-list dense>
-    <v-list-tile exact to="/admin">
-      <v-list-tile-action>
-        <v-icon>dashboard</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Dashboard</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+    <div class="col-sm-3 sidenav">
+     <div class="dash-logo">
+         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <img src="https://topshepherd.com/wp-content/uploads/2018/08/logo.png">
+                </div>
+            </a>
+     </div>
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion custom-header" id="accordionSidebar">
 
-    <v-list-group no-action>
-      <v-list-tile slot="activator">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>User Management</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-      <v-list-tile to="/admin/users">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Users</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <router-link class="nav-link" to="/admin">Dashboard</router-link>
+                
+            </li>
 
-      <v-list-tile to="/admin/roles">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Roles</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-      <v-list-tile to="/admin/permissions">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Permissions</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-list-group>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Users
+            </div>
 
-    <v-list-tile to="/admin/activities">
-      <v-list-tile-action>
-        <v-icon>settings</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Activities</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>View All</span>
+                </a>
+            </li>
 
-    <v-list-tile to="/admin/settings">
-      <v-list-tile-action>
-        <v-icon>settings</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Settings</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-  </v-list>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <router-link class="nav-link" to="/admin/addnewusers">Add New</router-link>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Addons
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Pages</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Login Screens:</h6>
+                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Other Pages:</h6>
+                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+
+        </ul>
+
+    </div>
 </template>
 
 
