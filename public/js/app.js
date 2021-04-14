@@ -2307,6 +2307,9 @@ function fetchSportList(query) {
 }
 function createusers(data) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post(apiurl + 'portal/createusers', {
+    header: {
+      "Accept": "application/json"
+    },
     body: data
   }).then(function (response) {
     return response;
@@ -2323,16 +2326,15 @@ function createusers(data) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_dist_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue/dist/vue */ "./node_modules/vue/dist/vue.js");
-/* harmony import */ var vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_dist_vue__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var vue_dist_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue/dist/vue */ "./node_modules/vue/dist/vue.js");
+/* harmony import */ var vue_dist_vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_dist_vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var vue_loaders_dist_vue_loaders_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-loaders/dist/vue-loaders.css */ "./node_modules/vue-loaders/dist/vue-loaders.css");
 /* harmony import */ var vue_loaders_dist_vue_loaders_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loaders_dist_vue_loaders_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_loaders__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loaders */ "./node_modules/vue-loaders/dist/vue-loaders.esm.js");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth */ "./resources/js/auth.js");
-/* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Dashboard */ "./resources/js/pages/Dashboard.vue");
-/* harmony import */ var _pages_users_AddNewUser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/users/AddNewUser */ "./resources/js/pages/users/AddNewUser.vue");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth */ "./resources/js/auth.js");
+/* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Dashboard */ "./resources/js/pages/Dashboard.vue");
+/* harmony import */ var _pages_users_AddNewUser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/users/AddNewUser */ "./resources/js/pages/users/AddNewUser.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -2342,14 +2344,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ //import VueLoaders from 'vue-loaders';
+//Vue.use(VueLoaders);
 
+vue_dist_vue__WEBPACK_IMPORTED_MODULE_1___default().use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__.BootstrapVue);
+vue_dist_vue__WEBPACK_IMPORTED_MODULE_1___default().use(vue_router__WEBPACK_IMPORTED_MODULE_3__.default);
 
-vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default().use(vue_loaders__WEBPACK_IMPORTED_MODULE_1__.default);
-vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default().use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__.BootstrapVue);
-vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default().use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
-
-(vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default().prototype.$auth) = new _auth__WEBPACK_IMPORTED_MODULE_5__.default(window.user);
-vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default().component('admin', __webpack_require__(/*! ./components/Admin.vue */ "./resources/js/components/Admin.vue").default);
+(vue_dist_vue__WEBPACK_IMPORTED_MODULE_1___default().prototype.$auth) = new _auth__WEBPACK_IMPORTED_MODULE_4__.default(window.user);
+vue_dist_vue__WEBPACK_IMPORTED_MODULE_1___default().component('admin', __webpack_require__(/*! ./components/Admin.vue */ "./resources/js/components/Admin.vue").default);
 
  // import Users from './pages/Users'
 // import Roles from './pages/Roles'
@@ -2358,10 +2360,10 @@ vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default().component('admin', __webpack
 
 var routes = [{
   path: '/admin/',
-  component: _pages_Dashboard__WEBPACK_IMPORTED_MODULE_6__.default
+  component: _pages_Dashboard__WEBPACK_IMPORTED_MODULE_5__.default
 }, {
   path: '/admin/addnewusers',
-  component: _pages_users_AddNewUser__WEBPACK_IMPORTED_MODULE_7__.default
+  component: _pages_users_AddNewUser__WEBPACK_IMPORTED_MODULE_6__.default
 } // {
 //     path: '/admin/roles',
 //     component: Roles
@@ -2379,7 +2381,7 @@ var routes = [{
 //     component: Activities
 // }
 ];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
   mode: 'history',
   routes: routes
 });
@@ -2389,7 +2391,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new (vue_dist_vue__WEBPACK_IMPORTED_MODULE_2___default())({
+var app = new (vue_dist_vue__WEBPACK_IMPORTED_MODULE_1___default())({
   el: '#app',
   router: router
 });
@@ -44785,7 +44787,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".col-sm-3.sidenav {\r\n    background: #4e73df;\r\n}\r\n.sidenav .dash-logo {\r\n    border-bottom: 1px solid #ffffff;\r\n    padding: 40px 0px 20px;\r\n}\r\n.custom-header {\r\n    margin-top: 22px;\r\n    margin-left: 22px;\r\n}\r\n\r\n.custom-header li.nav-item.active .nav-link {\r\n    color: #f1c0c7;\r\n    font-size: 18px;\r\n}\r\n\r\n.custom-header .sidebar-heading {\r\n    color: #fff;\r\n    font-weight: bold;\r\n    font-size: 22px;\r\n}\r\n\r\n.custom-header .nav-item .nav-link {\r\n    color: #ffffff;\r\n    font-size: 18px;\r\n}\r\n.topheader .nav-item.dropdown.no-arrow:hover .dropdown-menu {\r\n    display: block;\r\n}\r\n.top-header-heading a {\r\n    color: #b41c31;\r\n    font-size: 35px;\r\n    text-transform: capitalize;\r\n}\r\n.pageheader {\r\n    padding: 20px;\r\n    margin-bottom: 50px;\r\n    background: #efefef;\r\n}\r\n.mb-4, .my-4 {\r\n    margin-bottom: 0 !important;\r\n}\r\n.col-sm-9 {\r\n    padding-left: 0;\r\n}\r\n.vue-loaders.ball-beat {\r\n    background: #4e73df47;\r\n    width: 100%;\r\n    position: absolute;\r\n    z-index: 99;\r\n    text-align: center;\r\n    padding-top: 20%;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\nfooter.container-fluid {\r\n    text-align: center;\r\n    padding: 10px 0px;\r\n    line-height: 50px;\r\n    background: #4e73df;\r\n    color: #fff;\r\n}\r\n.container-fluid {\r\n    padding: 0;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".col-sm-3.sidenav {\n    background: #4e73df;\n}\n.sidenav .dash-logo {\n    border-bottom: 1px solid #ffffff;\n    padding: 40px 0px 20px;\n}\n.custom-header {\n    margin-top: 22px;\n    margin-left: 22px;\n}\n\n.custom-header li.nav-item.active .nav-link {\n    color: #f1c0c7;\n    font-size: 18px;\n}\n\n.custom-header .sidebar-heading {\n    color: #fff;\n    font-weight: bold;\n    font-size: 22px;\n}\n\n.custom-header .nav-item .nav-link {\n    color: #ffffff;\n    font-size: 18px;\n}\n.topheader .nav-item.dropdown.no-arrow:hover .dropdown-menu {\n    display: block;\n}\n.top-header-heading a {\n    color: #b41c31;\n    font-size: 35px;\n    text-transform: capitalize;\n}\n.pageheader {\n    padding: 20px;\n    margin-bottom: 50px;\n    background: #efefef;\n}\n.mb-4, .my-4 {\n    margin-bottom: 0 !important;\n}\n.col-sm-9 {\n    padding-left: 0;\n}\n.vue-loaders.ball-beat {\n    background: #4e73df47;\n    width: 100%;\n    position: absolute;\n    z-index: 99;\n    text-align: center;\n    padding-top: 20%;\n    top: 0;\n    bottom: 0;\n}\nfooter.container-fluid {\n    text-align: center;\n    padding: 10px 0px;\n    line-height: 50px;\n    background: #4e73df;\n    color: #fff;\n}\n.container-fluid {\n    padding: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49972,7 +49974,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\r\n\r\n\r\ndashboard\r\n   \r\n")])
+  return _c("div", [_vm._v("\n\n\ndashboard\n   \n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50192,7 +50194,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\r\n                               Add New\r\n                            "
+                      "\n                               Add New\n                            "
                     )
                   ]
                 )
@@ -50334,23 +50336,6 @@ function normalizeComponent (
     options: options
   }
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loaders/dist/vue-loaders.esm.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/vue-loaders/dist/vue-loaders.esm.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-let r=vue__WEBPACK_IMPORTED_MODULE_0__;function n(e){if("function"==typeof e.render&&r&&r.version&&/^[3-4]\./.test(r.version)&&r.h){const n=e.render;e.render=function(){const e=Array.prototype.slice.call(arguments),o="function"==typeof e[0]?e:[r.h].concat(e);return n.apply(this,o)}}return e}function o(e){const r={props:{color:{type:String,default:"#ffffff"},scale:{type:[String,Number]}}};return r.name="VueLoaders"+e.name.split(/-|\.js/).map(e=>e.charAt(0)?e.charAt(0).toUpperCase()+e.slice(1):e).join(""),r.render=function(e){const r=function(e){const r=l(e);return function e(n,o,l=r){return l.map(r=>{const l=r[0],t=r[1],a=t?e(n,o,t):void 0;return function(e,r,n){return e("div",{style:r},n)}(n,l(o),a)})}}(e.children);return function(n){return function(e,r,n,o){return e("div",{class:{"vue-loaders":!0,[r]:!0},style:{transform:void 0!==n?`scale(${n})`:void 0}},o)}(n,e.name,this.scale,r(n,this.color))}}(e),n(r),{originName:e.name,component:r,install(e){e.component(this.component.name,this.component)}}}function l(e){const r=[];if("number"==typeof e){const n=t();let o=e>0?e:1;for(;o--;)r.push([n])}else{if(!Array.isArray(e))throw new TypeError("Invalid children");{let n;for(const o of e){const e=t(o.color);let a=o.count>0?o.count:1;for(;a--;)n=[e],void 0!==o.children&&n.push(l(o.children)),r.push(n)}}}return r}function t(e="background-color"){return r=>{if("function"==typeof e)return e(r);const n=Array.isArray(e)?e:[e],o={};for(const e of n)o[e]=r;return o}}var a=o({name:"ball-beat",children:3}),c=o({name:"ball-grid-beat",children:9}),d=o({name:"ball-pulse-sync",children:3}),i=o({name:"ball-scale-ripple",children:[{count:1,color:"border-color"}]}),s=o({name:"ball-zig-zag-deflect",children:2}),u=o({name:"line-scale",children:5}),p=o({name:"line-spin-fade-loader",children:8}),m=o({name:"triangle-skew-spin",children:[{count:1,color:"border-bottom-color"}]}),h=o({name:"ball-clip-rotate",children:[{count:1,color:["border-top-color","border-left-color","border-right-color"]}]}),f=o({name:"ball-grid-pulse",children:9}),b=o({name:"ball-rotate",children:[{count:1,children:2}]}),g=o({name:"ball-scale-ripple-multiple",children:[{count:3,color:"border-color"}]}),y=o({name:"ball-zig-zag",children:2}),v=o({name:"line-scale-party",children:4}),A=o({name:"pacman",children:[{count:2,color:["border-top-color","border-left-color","border-bottom-color"]},{count:3}]}),w=o({name:"ball-clip-rotate-multiple",children:[{count:1,color:["border-right-color","border-left-color"]},{count:1,color:["border-top-color","border-bottom-color"]}]}),S=o({name:"ball-pulse",children:3}),k=o({name:"ball-scale",children:1}),z=o({name:"ball-spin-fade-loader",children:8}),N=o({name:"cube-transition",children:2}),$=o({name:"line-scale-pulse-out",children:5}),j=o({name:"semi-circle-spin",children:[{count:1,color:e=>({backgroundImage:`linear-gradient(transparent 0,transparent 70%, ${e} 30%, ${e} 100%)`})}]}),q=o({name:"ball-clip-rotate-pulse",children:[{count:1},{count:1,color:["border-top-color","border-bottom-color"]}]}),I=o({name:"ball-pulse-rise",children:5}),U=o({name:"ball-scale-multiple",children:3}),x=o({name:"ball-triangle-path",children:[{count:3,color:"border-color"}]}),C=o({name:"line-scale-pulse-out-rapid",children:5}),E=o({name:"square-spin",children:1});const H=new class{constructor(e){if(this.loaders={},Array.isArray(e))for(const r of e)this.add(r)}get(e){return this.loaders[e]}add(e){this.loaders[e.originName]=e}install(e){for(const r in this.loaders)this.loaders.hasOwnProperty(r)&&this.loaders[r].install(e)}};H.add(a),H.add(c),H.add(d),H.add(i),H.add(s),H.add(u),H.add(p),H.add(m),H.add(h),H.add(f),H.add(b),H.add(g),H.add(y),H.add(v),H.add(A),H.add(w),H.add(S),H.add(k),H.add(z),H.add(N),H.add($),H.add(j),H.add(q),H.add(I),H.add(U),H.add(x),H.add(C),H.add(E);const L={props:{name:{type:String,required:!0},color:{type:String,default:"#ffffff"},scale:{type:[Number,String]}},render(e){const r=H.get(this.name);if(r){const n={color:this.color,scale:this.scale};return r.component.render.call(n,e)}return console.warn('Unsupported loader name "'+this.name+'".See https://github.com/Hokid/vue-loaders#loaders'),null}};n(L);var O={component:L,install(e){e.component("vue-loaders",L),H.install(e)}};/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (O);
 
 
 /***/ }),
