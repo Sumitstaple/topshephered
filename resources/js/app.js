@@ -17,6 +17,8 @@ import DataTable from 'laravel-vue-datatable';
  
 Vue.use(DataTable);
 Vue.use(VueLoaders);
+//import VueLoaders from 'vue-loaders';
+
 Vue.use(BootstrapVue)
 
 
