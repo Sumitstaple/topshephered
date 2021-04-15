@@ -13,7 +13,9 @@ import VueRouter from 'vue-router'
 import { BootstrapVue } from 'bootstrap-vue'
 import 'vue-loaders/dist/vue-loaders.css';
 import VueLoaders from 'vue-loaders';
-
+import DataTable from 'laravel-vue-datatable';
+ 
+Vue.use(DataTable);
 Vue.use(VueLoaders);
 Vue.use(BootstrapVue)
 
@@ -29,6 +31,7 @@ Vue.component('admin', require('./components/Admin.vue').default);
 
 import Dashboard from './pages/Dashboard'
 import AddNewUser from './pages/users/AddNewUser'
+import ViewAll from './pages/users/ViewAll'
 // import Users from './pages/Users'
 // import Roles from './pages/Roles'
 // import Permissions from './pages/Permissions'
@@ -42,6 +45,10 @@ const routes = [
   {
       path: '/admin/addnewusers',
       component: AddNewUser
+  },
+    {
+      path: '/admin/viewall',
+      component: ViewAll
   },
   // {
   //     path: '/admin/roles',
