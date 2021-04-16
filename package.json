@@ -29,6 +29,6 @@
     "dependencies": {
         "bootstrap-vue": "^2.21.2",
         "util-request": "^1.0.3",
-        "vue-loaders": "^4.1.4",
+        "vue-loaders": "^4.1.4"
     }
 }

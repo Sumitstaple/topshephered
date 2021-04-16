@@ -16,16 +16,16 @@ class PortalApiController extends Controller
         ]);
     }
     public function store(Request $request){
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-        ]);
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8'],
+        // ]);
 
         $finduserbyemail = User::where('email',$request->email)->get();
         //return $finduserbyemail;
 
-            $users = User::create($request->all());
+            $users = User::create($request->body);
             return response()->json([
                 'status' => 'success',
                 'data' => $users
@@ -45,12 +45,13 @@ class PortalApiController extends Controller
     }
 
     public function update(Request $request,$id){
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email']
-        ]);
+        // return $request;
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email']
+        // ]);
         $user = User::find($id);
-        $user->update($request->all());
+        $user->update($request->body);
         return response()->json([
             'status' => 'success',
             'message'=> 'user updated successfully',
