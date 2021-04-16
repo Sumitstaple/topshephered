@@ -13,9 +13,9 @@ import VueRouter from 'vue-router'
 import { BootstrapVue } from 'bootstrap-vue'
 import 'vue-loaders/dist/vue-loaders.css';
 import VueLoaders from 'vue-loaders';
-import DataTable from 'laravel-vue-datatable';
+var apiurl = 'http://127.0.0.1:8000/api/';
  
-Vue.use(DataTable);
+
 Vue.use(VueLoaders);
 //import VueLoaders from 'vue-loaders';
 

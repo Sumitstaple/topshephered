@@ -21,3 +21,13 @@ export function createusers(data) {
   	return response
   })
 }
+
+
+// export function getusers(data) {
+//   axios.get(apiurl+'portal/users', {
+    
+//   })
+//   .then(response => {
+//     return response;
+//   })
+// }

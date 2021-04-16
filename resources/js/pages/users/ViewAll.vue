@@ -1,64 +1,59 @@
 <template>
 <div>
     <div class="pageheader">
-        <h2>Add New User</h2>
+        <h2>All Users</h2>
     </div>
+    <div class="container">
     <div class="pagecontent">
-         <data-table
-    :columns="columns"
-    url="http://example.test/example">
-</data-table>      
+       <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for='item in items'>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+            </tr>
+            </tbody>
+    </table>
+    </div>     
     </div>
 </div>
 </template>
 
 <script>
-import {createusers}  from '../../api';
+
+import {getusers}  from '../../api';
+import axios from 'axios';
+var apiurl = 'http://127.0.0.1:8000/api/';
 export default {
 name: 'ViewAll',
  data() {
     return{
-        columns: [{
-                        label: 'id',
-                        field: 'id'
-                    },
-                    {
-                        label: 'title',
-                        field: 'title'
-                    },
-                    {
-                        label: 'category',
-                        field: 'category'
-                    },
-                    {
-                        label: 'description',
-                        field: 'description'
-                    }
-                ],
-                rows: [],
-                page: 1,
-                filter:  '',
-                perPage: 12, 
+        rows: [],  
+        items: [],  
     }
   },
+  mounted(){
+        this.getList();
+
+  },
  methods: {
-        async create(e){
-
-          if (!this.form.name) {
-            this.errors.push('Name required.');
-          }
-          if (!this.form.email) {
-            this.errors.push('Email required.');
-          }
-
-          if(this.errors.length){
-            return false;
-          }
-
-            this.showloader = true;
-            const { data } = createusers(this.form);
-            console.log(data);
-        }
+    getList(id) {
+             axios.get(apiurl+'portal/users', {
+    
+              })
+              .then(response => {
+                    this.items = response.data.data;
+                    console.log(this.items);
+              })
+        
+    }
     },     
 }
 </script>

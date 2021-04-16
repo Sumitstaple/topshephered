@@ -12,7 +12,6 @@ class PortalApiController extends Controller
     public function index(){
         $users = User::all();
         return response()->json([
-            'status' => 'success',
             'data' => $users
         ]);
     }
