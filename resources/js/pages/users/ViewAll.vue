@@ -11,6 +11,7 @@
                 <th>ID</th>
                 <th>NAME</th>
                 <th>EMAIL</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -18,10 +19,14 @@
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.email}}</td>
+                <td><router-link class="nav-link" :to="'/admin/edituser/'+item.id">Edit</router-link>
+                <a href="#" v-on:click="deleteuser(item.id)">Delete</a>
+                </td>
+
             </tr>
             </tbody>
     </table>
-    </div>     
+    </div>
     </div>
 </div>
 </template>
@@ -35,8 +40,8 @@ export default {
 name: 'ViewAll',
  data() {
     return{
-        rows: [],  
-        items: [],  
+        rows: [],
+        items: [],
     }
   },
   mounted(){
@@ -46,18 +51,26 @@ name: 'ViewAll',
  methods: {
     getList(id) {
              axios.get(apiurl+'portal/users', {
-    
+
               })
               .then(response => {
                     this.items = response.data.data;
                     console.log(this.items);
               })
-        
+
+    },
+    deleteuser(id){
+          axios.delete(apiurl+'portal/users/'+id, {
+
+        })
+        .then(response => {
+            console.log(response);
+        })
     }
-    },     
+ }
 }
 </script>
 
 <style scoped>
 
-</style>    
+</style>

@@ -14,7 +14,7 @@ import { BootstrapVue } from 'bootstrap-vue'
 import 'vue-loaders/dist/vue-loaders.css';
 import VueLoaders from 'vue-loaders';
 var apiurl = 'http://127.0.0.1:8000/api/';
- 
+
 
 Vue.use(VueLoaders);
 //import VueLoaders from 'vue-loaders';
@@ -34,10 +34,7 @@ Vue.component('admin', require('./components/Admin.vue').default);
 import Dashboard from './pages/Dashboard'
 import AddNewUser from './pages/users/AddNewUser'
 import ViewAll from './pages/users/ViewAll'
-// import Users from './pages/Users'
-// import Roles from './pages/Roles'
-// import Permissions from './pages/Permissions'
-// import Activities from './pages/Activities'
+import EditUser from './pages/users/EditUser'
 
 const routes = [
   {
@@ -52,10 +49,10 @@ const routes = [
       path: '/admin/viewall',
       component: ViewAll
   },
-  // {
-  //     path: '/admin/roles',
-  //     component: Roles
-  // },
+  {
+      path: '/admin/edituser/:id(\\d+)',
+      component: EditUser
+  },
   // {
   //     path: '/admin/permissions',
   //     component: Permissions

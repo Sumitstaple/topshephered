@@ -23,11 +23,14 @@ export function createusers(data) {
 }
 
 
-// export function getusers(data) {
-//   axios.get(apiurl+'portal/users', {
-    
-//   })
-//   .then(response => {
-//     return response;
-//   })
-// }
+export function edituser(data,id) {
+  axios.put(apiurl+'portal/users/'+id, {
+    header:{
+        "Accept": "application/json",
+       },
+       body: data
+  })
+  .then(response => {
+    return response;
+  })
+}
