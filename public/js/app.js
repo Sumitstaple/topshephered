@@ -2187,16 +2187,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'AddNewUser',
   data: function data() {
     return {
-      errors: [],
+      errors: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: ''
+      },
       form: {
         name: '',
         email: '',
@@ -2218,11 +2219,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 if (!_this.form.name) {
-                  _this.errors.push('Name required.');
+                  _this.errors.name = 'Name required.';
                 }
 
                 if (!_this.form.email) {
-                  _this.errors.push('Email required.');
+                  _this.errors.email = 'Email required.';
                 }
 
                 if (!_this.errors.length) {
@@ -50115,20 +50116,6 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "pagecontent" }, [
-        _vm.errors.length
-          ? _c("p", [
-              _c("b", [_vm._v("Please correct the following error(s):")]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                _vm._l(_vm.errors, function(error) {
-                  return _c("li", [_vm._v(_vm._s(error))])
-                }),
-                0
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
         _c(
           "form",
           {
@@ -50171,7 +50158,11 @@ var render = function() {
                       _vm.$set(_vm.form, "name", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.name.length
+                  ? _c("span", [_vm._v(_vm._s(_vm.errors.name))])
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),

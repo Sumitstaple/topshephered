@@ -4,19 +4,15 @@
     <h2>Add New User</h2>
 </div>
 <div class="pagecontent">
-                <p v-if="errors.length">
-                    <b>Please correct the following error(s):</b>
-                    <ul>
-                      <li v-for="error in errors">{{ error }}</li>
-                    </ul>
-                  </p>
+
                 <form v-on:submit.prevent="create">
 
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">
+                            <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">              
+                             <span v-if="errors.name.length">{{ errors.name }}</span>
                         </div>
                     </div>
 
@@ -62,7 +58,12 @@ export default {
 name: 'AddNewUser',
  data() {
     return{
-        errors: [],
+        errors: {
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: ''
+            },
         form: {
                 name: '',
                 email: '',
@@ -76,10 +77,10 @@ name: 'AddNewUser',
         async create(e){
 
           if (!this.form.name) {
-            this.errors.push('Name required.');
+            this.errors.name = 'Name required.';
           }
           if (!this.form.email) {
-            this.errors.push('Email required.');
+            this.errors.email = 'Email required.';
           }
 
           if(this.errors.length){
