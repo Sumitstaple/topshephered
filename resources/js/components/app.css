@@ -64,3 +64,14 @@ footer.container-fluid {
 .container-fluid {
     padding: 0;
 }
+span.error {
+    color: red;
+    padding: 10px 0px;
+    display: block;
+}
+.pagecontent a {
+    display: inline;
+}
+i.fa.fa-trash {
+    color: red;
+}

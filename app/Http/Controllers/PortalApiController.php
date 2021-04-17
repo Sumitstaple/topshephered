@@ -16,22 +16,25 @@ class PortalApiController extends Controller
         ]);
     }
     public function store(Request $request){
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8'],
-        // ]);
 
-        $finduserbyemail = User::where('email',$request->email)->get();
-        //return $finduserbyemail;
+
+        $finduserbyemail = User::where('email',$request->body['email'])->get();
+
+        if(count($finduserbyemail) == 0){
 
             $users = User::create($request->body);
             return response()->json([
                 'status' => 'success',
-                'data' => $users
+                'data' => $users,
+                'message' => "User Created Successfully"
             ]);
-
-
+        }
+        else{
+            return response()->json([
+                'status' => 'fail',
+                'message' => "Error!"
+            ]);
+        }
 
     }
     public function show($id){
@@ -45,11 +48,6 @@ class PortalApiController extends Controller
     }
 
     public function update(Request $request,$id){
-        // return $request;
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email']
-        // ]);
         $user = User::find($id);
         $user->update($request->body);
         return response()->json([

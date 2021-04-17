@@ -12,7 +12,7 @@
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">              
-                             <span v-if="errors.name.length">{{ errors.name }}</span>
+                             <span class="error" v-if="errors.name.length">{{ errors.name }}</span>
                         </div>
                     </div>
 
@@ -20,6 +20,7 @@
                         <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control" name="email" value="" v-model="form.email">
+                            <span class="error" v-if="errors.email.length">{{ errors.email }}</span>
                         </div>
                     </div>
 
@@ -28,6 +29,7 @@
 
                         <div class="col-md-6">
                             <input id="password" type="password" class="form-control" name="password" v-model="form.password">
+                            <span class="error" v-if="errors.password.length">{{ errors.password }}</span>
                         </div>
                     </div>
 
@@ -36,6 +38,7 @@
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" v-model="form.password_confirmation">
+                            <span class="error" v-if="errors.password_confirmation.length">{{ errors.password_confirmation }}</span>
                         </div>
                     </div>
 
@@ -77,19 +80,64 @@ name: 'AddNewUser',
         async create(e){
 
           if (!this.form.name) {
-            this.errors.name = 'Name required.';
+            this.errors.name = 'Name is required.';
+            return false;
+          }
+          else{
+            this.errors.name = '';
           }
           if (!this.form.email) {
-            this.errors.email = 'Email required.';
+            this.errors.email = 'Email is required.';
+            return false;
+          }
+          else{
+            this.errors.email = '';
+          }
+          if (!this.form.password) {
+            this.errors.password = 'Password is required.';
+            return false;
+          }
+          else{
+            this.errors.password = '';
+          }
+          if (!this.form.password_confirmation) {
+            this.errors.password_confirmation = 'Confirm Password is required.';
+            return false;
+          }
+          else{
+            this.errors.password_confirmation = '';
+          }
+          if (!this.form.password_confirmation) {
+            this.errors.password_confirmation = 'Confirm Password is required.';
+            return false;
+          }
+          else{
+            this.errors.password_confirmation = '';
+          }
+
+          if(this.form.password_confirmation != this.form.password)
+          {
+             this.errors.password_confirmation = 'Confirm Password should be same.';
+             return false;
           }
 
           if(this.errors.length){
-            return false;
+            
           }
 
             this.showloader = true;
-            const { data } = createusers(this.form);
-            console.log(data);
+            const { data } = await createusers(this.form);
+            if(data.status == "success"){
+                this.$alert(data.message);
+                this.showloader = false;
+                this.$router.push('viewall');
+            }
+            else{
+                this.$alert(data.message);
+                this.showloader = false;
+            }
+            
+            
         }
     }
 }

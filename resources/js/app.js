@@ -13,8 +13,9 @@ import VueRouter from 'vue-router'
 import { BootstrapVue } from 'bootstrap-vue'
 import 'vue-loaders/dist/vue-loaders.css';
 import VueLoaders from 'vue-loaders';
-var apiurl = 'http://127.0.0.1:8000/api/';
-
+import VueSimpleAlert from "vue-simple-alert";
+ 
+Vue.use(VueSimpleAlert);
 
 Vue.use(VueLoaders);
 //import VueLoaders from 'vue-loaders';

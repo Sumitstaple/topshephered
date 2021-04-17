@@ -19,8 +19,9 @@
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.email}}</td>
-                <td><router-link class="nav-link" :to="'/admin/edituser/'+item.id">Edit</router-link>
-                <a href="#" v-on:click="deleteuser(item.id)">Delete</a>
+
+                <td><router-link class="nav-link" :to="'/admin/edituser/'+item.id"><i class="fa fa-edit"></i></router-link>
+                <a href="#" v-on:click="deleteuser(item.id)"><i class="fa fa-trash"></i></a>
                 </td>
 
             </tr>
@@ -33,8 +34,9 @@
 
 <script>
 
-import {getusers}  from '../../api';
+import {getusers,deleteusers}  from '../../api';
 import axios from 'axios';
+
 var apiurl = 'http://127.0.0.1:8000/api/';
 export default {
 name: 'ViewAll',
@@ -49,23 +51,21 @@ name: 'ViewAll',
 
   },
  methods: {
-    getList(id) {
-             axios.get(apiurl+'portal/users', {
-
-              })
-              .then(response => {
-                    this.items = response.data.data;
-                    console.log(this.items);
-              })
-
+    async getList(id) {
+            
+     const {data} = await getusers();
+     console.log(data);
+     this.items = data.data;
     },
-    deleteuser(id){
-          axios.delete(apiurl+'portal/users/'+id, {
+    async deleteuser(id){
 
-        })
-        .then(response => {
-            console.log(response);
-        })
+     const {data} =  await deleteusers(id);
+    
+     if(data.status == "success"){
+        this.$alert("User Deleted Successfully.");
+        this.getList();
+     }
+
     }
  }
 }

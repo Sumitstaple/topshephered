@@ -17,6 +17,7 @@
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">
+                            <span class="error" v-if="errors.name.length">{{ errors.name }}</span>
                         </div>
                     </div>
 
@@ -24,10 +25,11 @@
                         <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control" name="email" value="" v-model="form.email">
+                            <span class="error" v-if="errors.email.length">{{ errors.email }}</span>
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                         <div class="col-md-6">
@@ -41,7 +43,7 @@
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" v-model="form.password_confirmation">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
@@ -57,14 +59,16 @@
 </template>
 
 <script>
-import {edituser}  from '../../api';
+import {edituser,getuser}  from '../../api';
 import axios from 'axios';
-var apiurl = 'http://127.0.0.1:8000/api/';
 export default {
 name: 'EditUser',
  data() {
     return{
-        errors: [],
+        errors: {
+                name: '',
+                email: '',  
+            },
         form: {
                 name: '',
                 email: '',
@@ -74,43 +78,44 @@ name: 'EditUser',
          showloader:false,
     }
   },
-  mounted(){
-        this.getUser();
-
+  async mounted(){
+        //this.getUser();
+        const id = this.$route.params && this.$route.params.id;
+             
+        const {data} =  await getuser(id);
+        console.log(data);
+        this.form = data;
   },
  methods: {
         async edit(e){
 
           if (!this.form.name) {
-            this.errors.push('Name required.');
+            this.errors.name = 'Name is required.';
+            return false;
+          }
+          else{
+            this.errors.name = '';
           }
           if (!this.form.email) {
-            this.errors.push('Email required.');
-          }
-
-          if(this.errors.length){
+            this.errors.email = 'Email is required.';
             return false;
+          }
+          else{
+            this.errors.email = '';
           }
 
             this.showloader = true;
-            const { data } = edituser(this.form);
-            console.log(data);
-        },
-        getUser(){
             const id = this.$route.params && this.$route.params.id;
-             axios.get(apiurl+'portal/users/'+id, {
-
-              })
-              .then(response => {
-                    this.form = response.data;
-                    console.log(this.form);
-              })
-        },
-        async edit(){
-          const id = this.$route.params && this.$route.params.id;
-          console.log(this.form);
-          const {data} =  await edituser(this.form,id);
-          console.log(data);
+            const {data} =  await edituser(this.form,id);
+            if(data.status == "success"){
+                this.$alert("User Updated Successfully.");
+                this.showloader = false;
+                this.$router.push('viewall');
+            }
+            else{
+                this.$alert("Error");
+                this.showloader = false;
+            }
         }
 
     }

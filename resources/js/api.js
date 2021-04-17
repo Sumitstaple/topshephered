@@ -11,7 +11,7 @@ export function fetchSportList(query) {
 }
 
 export function createusers(data) {
-  axios.post(apiurl+'portal/createusers', {
+  return  axios.post(apiurl+'portal/createusers', {
     header:{
      "Accept": "application/json",
     },
@@ -24,7 +24,7 @@ export function createusers(data) {
 
 
 export function edituser(data,id) {
-  axios.put(apiurl+'portal/users/'+id, {
+  return axios.put(apiurl+'portal/users/'+id, {
     header:{
         "Accept": "application/json",
        },
@@ -33,4 +33,32 @@ export function edituser(data,id) {
   .then(response => {
     return response;
   })
+}
+export function getusers() {
+  
+return axios.get(apiurl+'portal/users', {
+
+      })
+      .then(response => {
+            return response;
+      })
+
+}              
+export function getuser(id) {
+
+return axios.get(apiurl+'portal/users/'+id, {
+
+      })
+      .then(response => {
+            return response;
+      })
+
+}        
+export function deleteusers(id) {
+return axios.delete(apiurl+'portal/users/'+id, {
+
+        })
+        .then(response => {
+             return response;
+        })  
 }
