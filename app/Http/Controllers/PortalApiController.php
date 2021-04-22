@@ -17,7 +17,7 @@ class PortalApiController extends Controller
     }
     public function store(Request $request){
 
-
+        return $request->body;
         $finduserbyemail = User::where('email',$request->body['email'])->get();
 
         if(count($finduserbyemail) == 0){

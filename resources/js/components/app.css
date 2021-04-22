@@ -75,3 +75,13 @@ span.error {
 i.fa.fa-trash {
     color: red;
 }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.tab-content .form-group {
+    display: inline-block;
+    float: left;
+}

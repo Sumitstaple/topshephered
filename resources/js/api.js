@@ -11,11 +11,10 @@ export function fetchSportList(query) {
 }
 
 export function createusers(data) {
-  return  axios.post(apiurl+'portal/createusers', {
+  return  axios.post(apiurl+'portal/createusers',data, {
     header:{
-     "Accept": "application/json",
-    },
-    body: data
+     'content-type': 'multipart/form-data'
+    }
   })
   .then(response => {
   	return response

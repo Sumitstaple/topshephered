@@ -1,0 +1,80 @@
+.delete-image-button {
+    background-color: red;
+    border: 0px !important;
+    position: absolute;
+}
+
+.pad-5 {
+    padding: 5px;
+}
+
+ul.pet-images{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+        display: inline-block;
+        padding: 5px;
+        div{
+            width: 150px;
+            position: relative;
+         }
+        img{
+            width:150px;
+            overflow: hidden;
+        }
+        input{
+            position: absolute;
+            bottom: 0;
+            background: rgba(26, 116, 19, 0.5);
+            border: none;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            ::-webkit-input-placeholder { /* WebKit, Blink, Edge */ color: #ffffff; }
+ 
+            :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color: #ffffff; opacity: 1; }
+            
+            ::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #ffffff; opacity: 1; }
+            
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */ color: #ffffff; }
+        }
+        span.trash{
+            position: absolute;
+            top: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            right: 2px;
+            background: red;
+            padding: 2px 4px;
+            border-radius: 2px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        span.star{
+            position: absolute;
+            top: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            right: 26px;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 4px;
+            border-radius: 2px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        span.starred{
+            background: rgba(0,0,0,0.8);
+            color: yellow;
+        }
+    }
+}
+
+.margin-btm-10px {
+    margin-bottom: 10px !important;
+}
