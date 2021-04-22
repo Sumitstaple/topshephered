@@ -35,4 +35,5 @@ export default {
 
 <style>
   @import './app.css';
+  @import './app.sass';
 </style>

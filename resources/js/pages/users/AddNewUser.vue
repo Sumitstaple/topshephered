@@ -5,7 +5,7 @@
 </div>
 <div class="pagecontent">
 
-                <form v-on:submit.prevent="create">
+                <form v-on:submit.prevent="create" enctype="multipart/form-data">
 
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
@@ -41,6 +41,14 @@
                             <span class="error" v-if="errors.password_confirmation.length">{{ errors.password_confirmation }}</span>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Profile Pic</label>
+
+                        <div class="col-md-6">
+                            <input id="password-confirm" type="file" class="form-control" name="profile_pic" @change="onFileChanged">
+                            <span class="error" v-if="errors.profile_pic.length">{{ errors.profile_pic }}</span>
+                        </div>
+                    </div>
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
@@ -65,13 +73,15 @@ name: 'AddNewUser',
                 name: '',
                 email: '',
                 password: '',
-                password_confirmation: ''
+                password_confirmation: '',
+                profile_pic: '',
             },
         form: {
                 name: '',
                 email: '',
                 password: '',
-                password_confirmation: ''
+                password_confirmation: '',
+                profile_pic: '',
             },
          showloader:false,
     }
@@ -107,26 +117,16 @@ name: 'AddNewUser',
           else{
             this.errors.password_confirmation = '';
           }
-          if (!this.form.password_confirmation) {
-            this.errors.password_confirmation = 'Confirm Password is required.';
-            return false;
-          }
-          else{
-            this.errors.password_confirmation = '';
-          }
+         
 
           if(this.form.password_confirmation != this.form.password)
           {
              this.errors.password_confirmation = 'Confirm Password should be same.';
              return false;
           }
-
-          if(this.errors.length){
-            
-          }
-
+            console.log(this.form);
             this.showloader = true;
-            const { data } = await createusers(this.form);
+            const { data } = await createusers(this.form.profile_pic);
             if(data.status == "success"){
                 this.$alert(data.message);
                 this.showloader = false;
@@ -138,8 +138,11 @@ name: 'AddNewUser',
             }
             
             
-        }
-    }
+        },
+    onFileChanged (event) {
+    this.form.profile_pic = event.target.files[0];
+  }
+ }
 }
 </script>
 
