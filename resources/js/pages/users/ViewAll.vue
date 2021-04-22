@@ -52,7 +52,7 @@ name: 'ViewAll',
   },
  methods: {
     async getList(id) {
-            
+
      const {data} = await getusers();
      console.log(data);
      this.items = data.data;
@@ -60,7 +60,7 @@ name: 'ViewAll',
     async deleteuser(id){
 
      const {data} =  await deleteusers(id);
-    
+
      if(data.status == "success"){
         this.$alert("User Deleted Successfully.");
         this.getList();

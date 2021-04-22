@@ -11,7 +11,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">              
+                            <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">
                              <span class="error" v-if="errors.name.length">{{ errors.name }}</span>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ name: 'AddNewUser',
           }
 
           if(this.errors.length){
-            
+
           }
 
             this.showloader = true;
@@ -136,8 +136,8 @@ name: 'AddNewUser',
                 this.$alert(data.message);
                 this.showloader = false;
             }
-            
-            
+
+
         }
     }
 }
