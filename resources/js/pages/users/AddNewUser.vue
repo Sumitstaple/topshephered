@@ -11,7 +11,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">              
+                            <input id="name" type="text" class="form-control" name="name" value="" v-model="form.name">
                              <span class="error" v-if="errors.name.length">{{ errors.name }}</span>
                         </div>
                     </div>
@@ -124,7 +124,8 @@ name: 'AddNewUser',
              this.errors.password_confirmation = 'Confirm Password should be same.';
              return false;
           }
-            console.log(this.form);
+
+
             this.showloader = true;
             const { data } = await createusers(this.form.profile_pic);
             if(data.status == "success"){
@@ -136,6 +137,7 @@ name: 'AddNewUser',
                 this.$alert(data.message);
                 this.showloader = false;
             }
+
             
             
         },
@@ -143,6 +145,7 @@ name: 'AddNewUser',
     this.form.profile_pic = event.target.files[0];
   }
  }
+
 }
 </script>
 

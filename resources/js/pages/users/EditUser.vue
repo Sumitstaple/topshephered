@@ -67,7 +67,7 @@ name: 'EditUser',
     return{
         errors: {
                 name: '',
-                email: '',  
+                email: '',
             },
         form: {
                 name: '',
@@ -81,7 +81,7 @@ name: 'EditUser',
   async mounted(){
         //this.getUser();
         const id = this.$route.params && this.$route.params.id;
-             
+
         const {data} =  await getuser(id);
         console.log(data);
         this.form = data;
