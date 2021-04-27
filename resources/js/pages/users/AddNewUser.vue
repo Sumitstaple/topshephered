@@ -117,14 +117,14 @@ name: 'AddNewUser',
           else{
             this.errors.password_confirmation = '';
           }
-         
+
 
           if(this.form.password_confirmation != this.form.password)
           {
              this.errors.password_confirmation = 'Confirm Password should be same.';
              return false;
           }
-
+            console.log(this.form);
 
             this.showloader = true;
             const { data } = await createusers(this.form.profile_pic);
@@ -137,15 +137,11 @@ name: 'AddNewUser',
                 this.$alert(data.message);
                 this.showloader = false;
             }
-
-            
-            
         },
     onFileChanged (event) {
     this.form.profile_pic = event.target.files[0];
   }
  }
-
 }
 </script>
 

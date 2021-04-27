@@ -6,8 +6,8 @@
 <div class="pagecontent ">
 
     <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item active" role="presentation">
-                <a href="#" class="nav-link" on:click="changetab('petinfo')">
+            <li class="nav-item active"  role="presentation">
+                <a href="#" class="nav-link" :class="activeclass" v-on:click="changetab('petinfo')">
                     Pet Details
                 </a>
             </li>
@@ -177,146 +177,157 @@
             </div>
             <div class="" id="externalAgencyDetails" v-show="pagetype=='externalagency'">
                 <div class="col-md-12">
-                    <div class="col-md-2 padding-top-20">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>External Agency</label><br>
-                                <button class="btn btn-primary btn-sm"
-                                        type="button">Add</button>
-                            </div>                            
+                    <div class="row">
+                        <div class="col-md-2 padding-top-20">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>External Agency</label><br>
+                                    <button class="btn btn-primary btn-sm"
+                                            type="button">Add</button>
+                                </div>                            
+                            </div>
+                        </div>                    
+                        <div class="col-md-9 col-md-offset-1 padding-top-20">
+                            <div class="row">
+                                <table class="table">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>Agency</th>
+                                            <th>ID</th> 
+                                            <th class="text-right">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-right">
+                                                <a class="btn btn-warning btn-sm"><i class="icon-pencil"></i>
+                                                </a>  
+                                                <button type="button" class="btn btn-danger btn-sm">
+                                                    <i class="icon-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>                    
-                    <div class="col-md-9 col-md-offset-1 padding-top-20">
-                        <div class="row">
-                            <table class="table">
-                                <thead class="thead-inverse">
-                                    <tr>
-                                        <th>Agency</th>
-                                        <th>ID</th> 
-                                        <th class="text-right">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-right">
-                                            <a class="btn btn-warning btn-sm"><i class="icon-pencil"></i>
-                                            </a>  
-                                            <button type="button" class="btn btn-danger btn-sm">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-md-12 text-right">
+                            <div class="second-section">
+                                <span class="pull-right text-right pad-5">(Please click on "Save" after adding/updating external agencies -->) &nbsp; &nbsp; &nbsp; </span>  
+                                <button title="Save" 
+                                    class="btn btn-sm btn-primary pull-right text-right">Save</button>    
+                            </div>                  
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button title="Save" 
-                            class="btn btn-sm btn-primary pull-right text-right">Save</button>
-                        <span class="pull-right text-right pad-5">(Please click on "Save" after adding/updating external agencies -->) &nbsp; &nbsp; &nbsp; </span>                        
                     </div>
                 </div> 
             </div>
             <div class="" id="certificationAgencyDetails" v-show="pagetype=='certificationagency'">                                            
                 <div class="col-md-12">
-                    <div class="col-md-2 padding-top-20">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Certification Agency</label><br>
-                                <button class="btn btn-primary btn-sm"
-                                        type="button"
-                                        >Add</button>
-                            </div>                            
+                    <div class="row">
+                        <div class="col-md-2 padding-top-20">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Certification Agency</label><br>
+                                    <button class="btn btn-primary btn-sm"
+                                            type="button"
+                                            >Add</button>
+                                </div>                            
+                            </div>
+                        </div>                    
+                        <div class="col-md-9 col-md-offset-1 padding-top-20">
+                            <div class="row">
+                                <table class="table">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>Agency</th>
+                                            <th>Date</th> 
+                                            <th class="text-right">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-right">
+                                                <a class="btn btn-warning btn-sm" 
+                                                    ><i class="icon-pencil"></i>
+                                                </a>  
+                                                <button type="button" class="btn btn-danger btn-sm">
+                                                    <i class="icon-trash"></i>
+                                                </button>                                              
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>                    
-                    <div class="col-md-9 col-md-offset-1 padding-top-20">
-                        <div class="row">
-                            <table class="table">
-                                <thead class="thead-inverse">
-                                    <tr>
-                                        <th>Agency</th>
-                                        <th>Date</th> 
-                                        <th class="text-right">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-right">
-                                            <a class="btn btn-warning btn-sm" 
-                                                ><i class="icon-pencil"></i>
-                                            </a>  
-                                            <button type="button" class="btn btn-danger btn-sm">
-                                                <i class="icon-trash"></i>
-                                            </button>                                              
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-md-12 col-md-offset-3 text-right">   
+                            <div class="second-section">   
+                                <span class="pull-right text-right pad-5">(Please click on "Save" after adding/updating Certification agencies -->) &nbsp; &nbsp; &nbsp; </span>                  
+                                <button title="Save" 
+                                        class="btn btn-sm btn-primary "
+                                        >Save</button>
+                                
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-9 col-md-offset-3">                        
-                        <button title="Save" 
-                                class="btn btn-sm btn-primary pull-right text-right"
-                                >Save</button>
-                        <span class="pull-right text-right pad-5">(Please click on "Save" after adding/updating Certification agencies -->) &nbsp; &nbsp; &nbsp; </span>
                     </div>
                 </div> 
             </div>
 
             <div class="" id="addParents" v-show="pagetype=='addparent'"> 
                 <div class="col-md-12">
-                    <div class="col-md-2 padding-top-20">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Add Parent</label>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="input-group">
-                                    <select class="input-sm form-control">
-                                        <option value="" disabled selected>Select Parent</option>
-                                        <option></option>
-                                    </select>
-                                    <span class="input-group-addon input-sm link" 
-                                            id="basic-addon3" 
-                                            >+</span>
+                    <div class="row">
+                        <div class="col-md-2 padding-top-20">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Add Parent</label>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <select class="input-sm form-control">
+                                            <option value="" disabled selected>Select Parent</option>
+                                            <option></option>
+                                        </select>
+                                        <span class="input-group-addon input-sm link" 
+                                                id="basic-addon3" 
+                                                >+</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>                    
-                    <div class="col-md-10 padding-top-20">
-                        <div class="row">
-                            <table class="table">
-                                <thead class="thead-inverse">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Breed</th>
-                                        <th>Breed Quality</th>
-                                        <th>Breed purpose</th>
-                                        <th>#Images</th>
-                                        <th>#Videos</th>
-                                        <th>#External Agency</th>
-                                        <th>#Certification Agency</th>
-                                        <th>Relation</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>                                                                                        
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>                                                                                
-                                    </tr>
-                                </tbody>
-                            </table>
+                        </div>                    
+                        <div class="col-md-10 padding-top-20">
+                            <div class="row">
+                                <table class="table">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Breed</th>
+                                            <th>Breed Quality</th>
+                                            <th>Breed purpose</th>
+                                            <th>#Images</th>
+                                            <th>#Videos</th>
+                                            <th>#External Agency</th>
+                                            <th>#Certification Agency</th>
+                                            <th>Relation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>                                                                                        
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>                                                                                
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>                 
@@ -331,7 +342,7 @@
                         <li >
                             <div>
                                 <img src="" alt="">
-                                <input type="text" maxlength="20"/>
+                                <input type="file" name="images[]" maxlength="20"/>
                                 <span class="star">
                                     <i class="icon-star"></i>
                                 </span>
@@ -352,30 +363,29 @@
             </div>
 
             <div id="videos" class="" v-show="pagetype=='videos'">
-                <div class="col-md-2 form-group">
-                        <p>
-                            <span><b>Upload Pet Video(s)</b></span> <br>
-                            <span>
-                                    (Please click on the below icon to select file's)
-                            </span>
-                        </p>
+                <div class="row">
+                    <div class="col-md-2 form-group">
+                            <p>
+                                <span><b>Upload Pet Video(s)</b></span> <br>
+                                <span>
+                                        (Please click on the below icon to select file's)
+                                </span>
+                            </p>
                     
-                </div>
-                <div class="col-md-10">
-                    <h5>Pet Video(s)</h5>
-                    <div>
-                        <div>
-                            <video src="video" height="300px" controls></video>
-                            <button class="btn btn-sm btn-danger"> <i class="icon-trash"></i></button>
-                        </div>
+                            <div>
+                                <i class="fas fa-video"></i><i class="fa fa-upload" aria-hidden="true"></i>
+                                
+                            </div>
                     </div>
-                    <div class="col-md-12">
-                        <hr>
-                        <button class="btn btn-primary">Save Changes</button>
-                        <button class="btn btn-secondary">Cancel</button>
+                    <div class="col-md-10">
+
+                        <h5>Pet Video(s)</h5>
+                            <hr>
+                            <button class="btn btn-primary">Save Changes</button>
+                            <button class="btn btn-secondary">Cancel</button>
+                        
                     </div>
                 </div>
-                
             </div>
 
             <div class="" id="pricing" v-show="pagetype=='pricing'">
@@ -447,7 +457,7 @@
                             <!--  2 ROW ENDS -->
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 ml-3">
                         <button class="btn btn-sm btn-primary">
                                 Update
                         </button>                        
@@ -502,6 +512,7 @@ name: 'AddPet',
             },
          showloader:false,
          pagetype:'petinfo',
+         activeclass: 'show'
     }
   },
  methods: {
@@ -512,6 +523,7 @@ name: 'AddPet',
         changetab(tab){
             
                 this.pagetype = tab;
+                this.activeclass = "show"
 
         }
  }
