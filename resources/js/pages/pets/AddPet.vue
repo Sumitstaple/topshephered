@@ -60,7 +60,8 @@
                                 <br>
                                 <select class="form-control input-sm" formControlName="gender">
                                     <option value="" disabled selected>Select Gender</option>
-                                    <option></option>
+                                    <option  value="Male">Male</option>
+                                    <option  value="Female">Female</option>
                                 </select>
                             </div>
 
@@ -69,7 +70,8 @@
                                 <br>
                                 <select class="input-sm form-control" formControlName="genderNomenclature">
                                     <option value="" disabled selected>Select Gender Nomenclature</option>
-                                    <option ></option>
+                                    <option value="Dam">Dam</option>
+                                    <option value="Sire">Sire</option>
                                 </select>
                             </div>  
                             
@@ -95,7 +97,7 @@
                                 <br>
                                 <select class="input-sm form-control" formControlName="breed">
                                     <option value="" disabled selected>Select Breed</option>
-                                    <option></option>
+                                    <option value="German Shepherd">German Shepherd</option>
                                 </select>
                             </div> 
                                 
@@ -104,7 +106,10 @@
                                 <br>
                                 <select class="input-sm form-control" formControlName="breedQuality">
                                     <option value="" disabled selected>Select Breed Quality</option>
-                                    <option></option>
+                                    <option  value="Choice">Choice</option>
+                                    <option  value="Elite">Elite</option>
+                                    <option  value="Exceptional">Exceptional</option>
+                                    <option  value="Ultimate">Ultimate</option>
                                 </select>
                             </div> 
                                     
@@ -113,7 +118,8 @@
                                 <br>
                                 <select class="input-sm form-control" formControlName="breedType">
                                     <option value="" disabled selected>Select Breed Type</option>
-                                    <option></option>
+                                    <option  value="Long Coat">Long Coat</option>
+                                    <option  value="Short Coat">Short Coat</option>
                                 </select>
                             </div> 
 
@@ -122,7 +128,9 @@
                                 <br>
                                 <select class="input-sm form-control" formControlName="breedPurpose">
                                     <option value="" disabled selected>Select Breed Purpose</option>
-                                    <option></option>
+                                    <option  value="Protection">Protection</option>
+                                    <option  value="Family">Family</option>
+                                    <option  value="Hunting">Hunting</option>
                                 </select>
                             </div>                                                                                                                                                                           
                             <!--  2 ROW ENDS -->
@@ -135,7 +143,10 @@
                                 <br>
                                 <select class="input-sm form-control" formControlName="markingsOrColor">
                                     <option value="" disabled selected>Select Marking Color</option>
-                                    <option></option>
+                                    <option  value="Black">Black</option>
+                                    <option  value="White">White</option>
+                                    <option  value="Black and Red">Black and Red</option>
+                                    <option  value="Black and Tan">Black and Tan</option>
                                 </select>
                             </div> 
 
@@ -144,7 +155,10 @@
                                 <br>
                                 <select class="input-sm form-control">
                                     <option value="" disabled selected>Select Status</option>
-                                    <option></option>
+                                    <option  value="Sold">Sold</option>
+                                    <option  value="Upcoming">Upcoming</option>
+                                    <option  value="Current">Current</option>
+                                    <option  value="Reserved">Reserved</option>
                                 </select>
                             </div> 
 
@@ -153,7 +167,8 @@
                                 <br>
                                 <select class="input-sm form-control" formControlName="title">
                                     <option value="" disabled selected>Select Title</option>
-                                    <option></option>
+                                    <option  value="Puppy">Puppy</option>
+                                    <option  value="Parent">Parent</option>
                                 </select>
                             </div>
                             
@@ -404,7 +419,9 @@
                                 <br>
                                 <select class="input-sm form-control" >
                                     <option value="" disabled selected>Select Price Type</option>
-                                    <option></option>
+                                    <option  value="TBD">TBD</option>
+                                    <option  value="fixed">Fixed Price</option>
+                                    <option  value="range">Variable Price</option>
                                 </select>
                             </div> 
 
@@ -418,40 +435,13 @@
                                        placeholder="Please Add price"/>
                             </div>
         
-                            <div class="col-md-3 form-group form-group-sm">
-                                <label class="required-mark">From Price</label>
-                                <br>
-                                <input class="form-control" 
-                                       type="number"
-                                       min="1"
-                                      
-                                       placeholder="From price"/>
-                            </div>
-        
-                            <div class="col-md-3 form-group form-group-sm">
-                                <label class="required-mark">To Price</label>
-                                <br>
-                                <input class="form-control" 
-                                       type="number"
-                                       min="1"
-                                       
-                                       placeholder="To price"/>
-                            </div>
-        
-                            <div class="col-md-6 form-group form-group-sm">
-                                <label class="required-mark">Custom Message</label>
-                                <br>
-                                <input class="form-control" 
-                                       
-                                       placeholder="Custom message"/>
-                            </div>
         
                             <div class="col-sm-3 form-group form-group-sm">
                                 <label>Price Units</label>
                                 <br>
                                 <select class="input-sm form-control" >
                                     <option value="" disabled selected>Price Units</option>
-                                    <option></option>
+                                    <option  value="$">USD</option>
                                 </select>
                             </div>
                             <!--  2 ROW ENDS -->
