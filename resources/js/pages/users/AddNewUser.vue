@@ -42,12 +42,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Profile Pic</label>
-
-                        <div class="col-md-6">
-                            <input id="password-confirm" type="file" class="form-control" name="profile_pic" @change="onFileChanged">
-                            <span class="error" v-if="errors.profile_pic.length">{{ errors.profile_pic }}</span>
-                        </div>
+                       <vue-upload-multiple-image
+                          @upload-success="uploadImageSuccess"
+                          @before-remove="beforeRemove"
+                          @edit-image="editImage"
+                          :data-images="images"
+                          :maxImage=1
+                          dragText="upload" 
+                          browseText="upload" 
+                          :primaryText="upload" 
+                          ></vue-upload-multiple-image>
                     </div>
 
                     <div class="form-group row mb-0">
@@ -65,8 +69,12 @@
 
 <script>
 import {createusers}  from '../../api';
+import VueUploadMultipleImage from 'vue-upload-multiple-image'
 export default {
 name: 'AddNewUser',
+ components: {
+    VueUploadMultipleImage
+  },
  data() {
     return{
         errors: {
@@ -81,14 +89,15 @@ name: 'AddNewUser',
                 email: '',
                 password: '',
                 password_confirmation: '',
-                profile_pic: '',
+                profile_pic: {},
             },
          showloader:false,
+         images: []
     }
   },
  methods: {
         async create(e){
-
+          
           if (!this.form.name) {
             this.errors.name = 'Name is required.';
             return false;
@@ -127,7 +136,7 @@ name: 'AddNewUser',
             console.log(this.form);
 
             this.showloader = true;
-            const { data } = await createusers(this.form.profile_pic);
+            const { data } = await createusers(this.form);
             if(data.status == "success"){
                 this.$alert(data.message);
                 this.showloader = false;
@@ -138,9 +147,24 @@ name: 'AddNewUser',
                 this.showloader = false;
             }
         },
-    onFileChanged (event) {
-    this.form.profile_pic = event.target.files[0];
-  }
+
+      uploadImageSuccess(formData, index, fileList) {
+      // alert();
+     console.log(fileList[0].path);
+      this.form.profile_pic[0] = {image:fileList[0].path};
+
+    },
+    beforeRemove (index, done, fileList) {
+      console.log('index', index, fileList)
+      var r = confirm("remove image")
+      if (r == true) {
+        done()
+      } else {
+      }
+    },
+    editImage (formData, index, fileList) {
+      console.log('edit data', formData, index, fileList)
+    }
  }
 }
 </script>

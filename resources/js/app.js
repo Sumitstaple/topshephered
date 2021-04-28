@@ -14,6 +14,10 @@ import { BootstrapVue } from 'bootstrap-vue'
 import 'vue-loaders/dist/vue-loaders.css';
 import VueLoaders from 'vue-loaders';
 import VueSimpleAlert from "vue-simple-alert";
+import VueLazyload from 'vue-lazyload'
+ 
+Vue.use(VueLazyload)
+
  
 Vue.use(VueSimpleAlert);
 

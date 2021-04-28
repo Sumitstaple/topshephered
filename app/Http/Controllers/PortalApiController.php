@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 use App\Models\User;
 
+use Intervention\Image\ImageManagerStatic as Image;
+
+use Hash;
+
 class PortalApiController extends Controller
 {
 
@@ -17,12 +21,30 @@ class PortalApiController extends Controller
     }
     public function store(Request $request){
 
-        return $request->body;
-        $finduserbyemail = User::where('email',$request->body['email'])->get();
+        // return $request['profile_pic'][0]['image'];
+        if(isset($request['profile_pic'][0]['image'])){
+            $imagename = uniqid().'.png';
+            $img = Image::make($request['profile_pic'][0]['image']); 
+            $img->save(public_path().'/petimages/'.$imagename); 
+
+            $request['profile_pic'] = $imagename;
+        }
+        else{
+            $imagename='';
+            $request['profile_pic'] ='';
+        }
+    
+    // return $request;
+        $finduserbyemail = User::where('email',$request['email'])->get();
 
         if(count($finduserbyemail) == 0){
-
-            $users = User::create($request->body);
+            
+            $users = new User();
+            $users->name = $request['name'];
+            $users->email = $request['email'];
+            $users->password = Hash::make($request['password']);
+            $users->profile_pic = $request['profile_pic'];
+            $users->save();
             return response()->json([
                 'status' => 'success',
                 'data' => $users,
