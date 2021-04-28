@@ -357,7 +357,16 @@
                         <li >
                             <div>
                                 <img src="" alt="">
-                                <input type="file" name="images[]" maxlength="20"/>
+                                <vue-upload-multiple-image
+                          @upload-success="uploadImageSuccess"
+                          @before-remove="beforeRemove"
+                          @edit-image="editImage"
+                          :data-images="images"
+                          :maxImage=10
+                          dragText="upload" 
+                          browseText="upload" 
+                          :primaryText="upload" 
+                          ></vue-upload-multiple-image>
                                 <span class="star">
                                     <i class="icon-star"></i>
                                 </span>
@@ -465,8 +474,12 @@
 
 <script>
 import {createusers}  from '../../api';
+import VueUploadMultipleImage from 'vue-upload-multiple-image'
 export default {
 name: 'AddPet',
+components: {
+    VueUploadMultipleImage
+  },
  data() {
     return{
         errors: {
@@ -516,7 +529,8 @@ name: 'AddPet',
             },
          showloader:false,
          pagetype:'petinfo',
-         activeclass: 'show'
+         activeclass: 'show',
+         images:[]
     }
   },
  methods: {
@@ -529,7 +543,24 @@ name: 'AddPet',
                 this.pagetype = tab;
                 this.activeclass = "show"
 
-        }
+        },
+        uploadImageSuccess(formData, index, fileList) {
+      // alert();
+     // console.log(fileList[0].path);
+      // this.form.profile_pic[0] = {image:fileList[0].path};
+
+    },
+    beforeRemove (index, done, fileList) {
+      console.log('index', index, fileList)
+      var r = confirm("remove image")
+      if (r == true) {
+        done()
+      } else {
+      }
+    },
+    editImage (formData, index, fileList) {
+      console.log('edit data', formData, index, fileList)
+    }
  }
 }
 </script>
