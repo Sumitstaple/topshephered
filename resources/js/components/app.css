@@ -14,6 +14,9 @@
     color: #f1c0c7;
     font-size: 18px;
 }
+.modal-footer {
+    display: none;
+}
 
 .custom-header .sidebar-heading {
     color: #fff;
@@ -32,6 +35,12 @@ ul.pet-images {
 }
 div#videos .fa {
     font-size: 20px;
+}
+.image-bottom-left.display-flex.align-items-center {
+    display: none;
+}
+ul.pet-images .image-container.position-relative.text-center {
+    margin: auto;
 }
 
 div#videos .fas {
@@ -93,6 +102,9 @@ span.error {
 }
 .pagecontent a {
     display: inline;
+}
+i.fa.fa-trash {
+    cursor: pointer;
 }
 i.fa.fa-trash {
     color: red;

@@ -7,37 +7,37 @@
 
     <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item active"  role="presentation">
-                <a href="#" class="nav-link" :class="activeclass" v-on:click="changetab('petinfo')">
+                <a href="javascript:void(0);" class="nav-link" :class="activeclass" v-on:click="changetab('petinfo')">
                     Pet Details
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a href="#" class="nav-link" v-on:click="changetab('externalagency')">
+                <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('externalagency')">
                     External Agency
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a href="#" class="nav-link" v-on:click="changetab('certificationagency')">
+                <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('certificationagency')">
                     Certification Agency
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a href="#" class="nav-link" v-on:click="changetab('addparent')">
+                <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('addparent')">
                     Add Parents
                 </a>
             </li>  
             <li class="nav-item" role="presentation" >                                       
-                <a href="#" class="nav-link" v-on:click="changetab('images')">
+                <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('images')">
                     Images
                 </a>
             </li>                       
             <li class="nav-item" role="presentation">
-                <a href="#" class="nav-link" v-on:click="changetab('videos')">
+                <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('videos')">
                     Videos
                 </a>
             </li> 
             <li class="nav-item" role="presentation">
-                <a href="#"class="nav-link" v-on:click="changetab('pricing')">
+                <a href="javascript:void(0);"class="nav-link" v-on:click="changetab('pricing')">
                     Pricing
                 </a>
             </li>      
@@ -197,8 +197,29 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>External Agency</label><br>
-                                    <button class="btn btn-primary btn-sm"
-                                            type="button">Add</button>
+                                  
+                                    <b-button v-b-modal.modal-1 class="btn btn-primary btn-sm">Add</b-button>
+                                     <b-modal id="modal-1" title="BootstrapVue">
+                                        
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                            <label class="required-mark">Agency*</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                            <input class="form-control input-sm" type="text" v-model="form.externalAgency.agency"/>
+                                        </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                            <label class="required-mark">Agency Id*</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                            <input class="form-control input-sm" type="text" v-model="form.externalAgency.id"/>
+                                            </div>
+                                        </div>
+
+                                        <b-button class="mt-3" blockblock @click="hideModal">Save</b-button>
+                                      </b-modal>       
                                 </div>                            
                             </div>
                         </div>                    
@@ -214,27 +235,17 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="text-right">
-                                                <a class="btn btn-warning btn-sm"><i class="icon-pencil"></i>
-                                                </a>  
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="icon-trash"></i>
-                                                </button>
+                                            <td>{{form.externalAgency.agency}}</td>
+                                            <td><span v-if="form.externalAgency.agency">{{ new Date().toLocaleString() }}</span></td>
+                                             <td class="text-right">
+                                                <i class="fa fa-trash" v-on:click="deleteexternal"></i>                                       
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="col-md-12 text-right">
-                            <div class="second-section">
-                                <span class="pull-right text-right pad-5">(Please click on "Save" after adding/updating external agencies -->) &nbsp; &nbsp; &nbsp; </span>  
-                                <button title="Save" 
-                                    class="btn btn-sm btn-primary pull-right text-right">Save</button>    
-                            </div>                  
-                        </div>
+                       
                     </div>
                 </div> 
             </div>
@@ -245,9 +256,28 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>Certification Agency</label><br>
-                                    <button class="btn btn-primary btn-sm"
-                                            type="button"
-                                            >Add</button>
+                                     <b-button v-b-modal.modal-2 class="btn btn-primary btn-sm">Add</b-button>
+                                     <b-modal id="modal-2" title="Add Agency">
+                                        
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                            <label class="required-mark">Agency*</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                            <input class="form-control input-sm" type="text" v-model="form.certificationAgency.agency"/>
+                                        </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                            <label class="required-mark">Agency Id*</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                            <input class="form-control input-sm" type="text" v-model="form.certificationAgency.id"/>
+                                            </div>
+                                        </div>
+
+                                        <b-button class="mt-3" blockblock @click="hideModal2">Save</b-button>
+                                      </b-modal>  
                                 </div>                            
                             </div>
                         </div>                    
@@ -263,30 +293,17 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
+                                           <td>{{form.certificationAgency.agency}}</td>
+                                            <td><span v-if="form.certificationAgency.agency">{{ new Date().toLocaleString() }}</span></td>
                                             <td class="text-right">
-                                                <a class="btn btn-warning btn-sm" 
-                                                    ><i class="icon-pencil"></i>
-                                                </a>  
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="icon-trash"></i>
-                                                </button>                                              
+                                                <i class="fa fa-trash" v-on:click="deletecertificate"></i>                                       
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="col-md-12 col-md-offset-3 text-right">   
-                            <div class="second-section">   
-                                <span class="pull-right text-right pad-5">(Please click on "Save" after adding/updating Certification agencies -->) &nbsp; &nbsp; &nbsp; </span>                  
-                                <button title="Save" 
-                                        class="btn btn-sm btn-primary "
-                                        >Save</button>
-                                
-                            </div>
-                        </div>
+                       
                     </div>
                 </div> 
             </div>
@@ -378,12 +395,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-sm-12">
-                    <button type="button" class="btn btn-sm btn-primary"> 
-                        Update Images
-                    </button>
-                    <span> &nbsp;&nbsp;&nbsp;&nbsp; (<-- Please click on "Update Images" after adding/updating images) </span>
-                </div>                
+                              
             </div>
 
             <div id="videos" class="" v-show="pagetype=='videos'">
@@ -533,10 +545,13 @@ components: {
          images:[]
     }
   },
+  mounted(){
+
+  },
  methods: {
         async create(e){
-
-  
+            console.log(this.form.externalAgency.agency);
+        console.log(this.form.images);
         },
         changetab(tab){
             
@@ -545,22 +560,46 @@ components: {
 
         },
         uploadImageSuccess(formData, index, fileList) {
-      // alert();
-     // console.log(fileList[0].path);
-      // this.form.profile_pic[0] = {image:fileList[0].path};
+
+      this.form.images[index] = {image:fileList[index].path};
 
     },
     beforeRemove (index, done, fileList) {
       console.log('index', index, fileList)
+      var abc = delete this.form.images[index];
+      console.log(abc);
       var r = confirm("remove image")
+      console.log(this.form.images);
       if (r == true) {
+
         done()
+
       } else {
       }
     },
     editImage (formData, index, fileList) {
       console.log('edit data', formData, index, fileList)
-    }
+    },
+    hideModal() {
+        this.$root.$emit('bv::hide::modal', 'modal-1', '#btnShow')
+      },
+
+      hideModal2() {
+        this.$root.$emit('bv::hide::modal', 'modal-2', '#btnShow')
+      },
+      deletecertificate(){
+        this.form.certificationAgency={
+            agency:'',
+            id:''
+        }
+      }
+      ,
+      deleteexternal(){
+        this.form.externalAgency={
+            agency:'',
+            id:''
+        }
+      }
  }
 }
 </script>
