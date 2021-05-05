@@ -7,11 +7,11 @@
 
     <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item active"  role="presentation">
-                <a href="javascript:void(0);" class="nav-link" :class="activeclass" v-on:click="changetab('petinfo')">
+                <a href="javascript:void(0);" class="nav-link active" :class="activeclass" v-on:click="changetab('petinfo')">
                     Pet Details
                 </a>
             </li>
-            <li class="nav-item" role="presentation">
+            <!-- <li class="nav-item" role="presentation">
                 <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('externalagency')">
                     External Agency
                 </a>
@@ -40,7 +40,7 @@
                 <a href="javascript:void(0);"class="nav-link" v-on:click="changetab('pricing')">
                     Pricing
                 </a>
-            </li>      
+            </li>     -->  
         </ul>  
 
         <div class="tab-content">
@@ -52,13 +52,13 @@
                             <div class="col-sm-3 form-group">
                                 <label class="required-mark">Pet Name</label>
                                 <br>
-                                <input class="form-control input-sm" type="text" placeholder="Please enter pet name" formControlName="name" />
+                                <input class="form-control input-sm" type="text" placeholder="Please enter pet name" formControlName="name" v-model="form.name" @change="onChangeinput"/>
                             </div>
 
                             <div class="col-sm-3 form-group">
                                 <label class="required-mark">Gender</label>
                                 <br>
-                                <select class="form-control input-sm" formControlName="gender">
+                                <select class="form-control input-sm" formControlName="gender" v-model="form.gender" @change="onChangeinput">
                                     <option value="" disabled selected>Select Gender</option>
                                     <option  value="Male">Male</option>
                                     <option  value="Female">Female</option>
@@ -68,7 +68,7 @@
                             <div class="col-sm-3 form-group">
                                 <label>Gender Nomenclature</label>
                                 <br>
-                                <select class="input-sm form-control" formControlName="genderNomenclature">
+                                <select class="input-sm form-control" formControlName="genderNomenclature" v-model="form.genderNomenclature">
                                     <option value="" disabled selected>Select Gender Nomenclature</option>
                                     <option value="Dam">Dam</option>
                                     <option value="Sire">Sire</option>
@@ -80,7 +80,7 @@
                                 <br>
                                 <div class="form-group">
                                     <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' class="form-control input-sm"/>
+                                        <input type='date' class="form-control input-sm" v-model="form.dateOfBirth"/>
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>                                                  
@@ -95,7 +95,7 @@
                             <div class="col-sm-3 form-group">
                                 <label>Breed</label>
                                 <br>
-                                <select class="input-sm form-control" formControlName="breed">
+                                <select class="input-sm form-control" formControlName="breed" v-model="form.breed">
                                     <option value="" disabled selected>Select Breed</option>
                                     <option value="German Shepherd">German Shepherd</option>
                                 </select>
@@ -104,7 +104,7 @@
                             <div class="col-sm-3 form-group">
                                 <label>Breed Quality</label>
                                 <br>
-                                <select class="input-sm form-control" formControlName="breedQuality">
+                                <select class="input-sm form-control" formControlName="breedQuality" v-model="form.breedQuality">
                                     <option value="" disabled selected>Select Breed Quality</option>
                                     <option  value="Choice">Choice</option>
                                     <option  value="Elite">Elite</option>
@@ -116,7 +116,7 @@
                             <div class="col-sm-3 form-group">
                                 <label>Breed Type</label>
                                 <br>
-                                <select class="input-sm form-control" formControlName="breedType">
+                                <select class="input-sm form-control" formControlName="breedType" v-model="form.breedType">
                                     <option value="" disabled selected>Select Breed Type</option>
                                     <option  value="Long Coat">Long Coat</option>
                                     <option  value="Short Coat">Short Coat</option>
@@ -126,7 +126,7 @@
                             <div class="col-sm-3 form-group">
                                 <label>Breed Purpose</label>
                                 <br>
-                                <select class="input-sm form-control" formControlName="breedPurpose">
+                                <select class="input-sm form-control" formControlName="breedPurpose" v-model="form.breedPurpose">
                                     <option value="" disabled selected>Select Breed Purpose</option>
                                     <option  value="Protection">Protection</option>
                                     <option  value="Family">Family</option>
@@ -141,7 +141,7 @@
                             <div class="col-sm-3 form-group">
                                 <label>Marking/Color</label>
                                 <br>
-                                <select class="input-sm form-control" formControlName="markingsOrColor">
+                                <select class="input-sm form-control" formControlName="markingsOrColor" v-model="form.markingsOrColor">
                                     <option value="" disabled selected>Select Marking Color</option>
                                     <option  value="Black">Black</option>
                                     <option  value="White">White</option>
@@ -153,7 +153,7 @@
                             <div class="col-sm-3 form-group">
                                 <label>Status</label>
                                 <br>
-                                <select class="input-sm form-control">
+                                <select class="input-sm form-control" v-model="form.status">
                                     <option value="" disabled selected>Select Status</option>
                                     <option  value="Sold">Sold</option>
                                     <option  value="Upcoming">Upcoming</option>
@@ -165,7 +165,7 @@
                             <div class="col-sm-3 form-group">
                                 <label class="required-mark">Title</label> 
                                 <br>
-                                <select class="input-sm form-control" formControlName="title">
+                                <select class="input-sm form-control" formControlName="title" v-model="form.title" @change="onChangeinput">
                                     <option value="" disabled selected>Select Title</option>
                                     <option  value="Puppy">Puppy</option>
                                     <option  value="Parent">Parent</option>
@@ -178,14 +178,18 @@
                                 <textarea class="form-control" 
                                             rows="3" 
                                             formControlName="description" 
-                                            placeholder="Description"></textarea>
+                                            placeholder="Description" v-model="form.description"></textarea>
                             </div>
                         </div>                                
                     </div>
                     <div class="col-sm-12">
-                        <button class="btn btn-sm btn-primary" value="Save">
-                            & Continue
+                        <button type="button" class="btn btn-sm btn-primary" value="Save" @click="create" v-show="buttondisable == 'show'">
+
+                        Update & Continue
+                        </button>   
+                        <button type="button" class="btn btn-sm btn-primary" value="Save"  disabled v-show="buttondisable == 'hide'">    
                             
+                            Update & Continue
                         </button>                        
                     </div>
                 </form>
@@ -391,7 +395,7 @@
                                     <i class="icon-trash"></i>
                                 </span>
                             </div>
-                            
+                                
                         </li>
                     </ul>
                 </div>
@@ -400,7 +404,7 @@
 
             <div id="videos" class="" v-show="pagetype=='videos'">
                 <div class="row">
-                    <div class="col-md-2 form-group">
+                    <div class="col-md-4 form-group">
                             <p>
                                 <span><b>Upload Pet Video(s)</b></span> <br>
                                 <span>
@@ -408,17 +412,26 @@
                                 </span>
                             </p>
                     
-                            <div>
+                            <div class="videomain">
+                                <input type="file" name="video" @change="uploadvideo" class="videoinput">
+                                <div class="iconupload">
                                 <i class="fas fa-video"></i><i class="fa fa-upload" aria-hidden="true"></i>
+                            </div>
                                 
                             </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
 
                         <h5>Pet Video(s)</h5>
-                            <hr>
-                            <button class="btn btn-primary">Save Changes</button>
-                            <button class="btn btn-secondary">Cancel</button>
+                            <div class="row">
+                           <div class="col-md-4" v-for="(item, index) in form.videos" :key="">
+                                <i class="fa fa-trash" v-on:click="deletevideo(index)"></i>
+                                <video width="100%" height="100%" controls>
+                                <source :src="'http://127.0.0.1:8000/videos/'+item" type="video/mp4">
+                            </video>
+                           </div>
+                       </div>
+                          
                         
                     </div>
                 </div>
@@ -485,8 +498,11 @@
 </template>
 
 <script>
-import {createusers}  from '../../api';
+import {createpets}  from '../../api';
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
+import axios from 'axios';
+
+var apiurl = 'http://127.0.0.1:8000/api/';
 export default {
 name: 'AddPet',
 components: {
@@ -542,7 +558,9 @@ components: {
          showloader:false,
          pagetype:'petinfo',
          activeclass: 'show',
-         images:[]
+         images:[],
+         videos:[],
+         buttondisable:'hide'
     }
   },
   mounted(){
@@ -550,8 +568,15 @@ components: {
   },
  methods: {
         async create(e){
-            console.log(this.form.externalAgency.agency);
-        console.log(this.form.images);
+            console.log(this.form);
+
+            const { data } = await createpets(this.form);
+           if(data.status == "success"){
+            this.$router.push({ path: `/admin/editpet/${data.data.id}` });
+           }
+           else{
+
+           }
         },
         changetab(tab){
             
@@ -598,6 +623,44 @@ components: {
         this.form.externalAgency={
             agency:'',
             id:''
+        }
+      },
+     async uploadvideo(e){
+        console.log(e.target.files[0])
+        const data = new FormData();
+        data.append('video', e.target.files[0]);
+        await axios.post( apiurl+'pets/uploadvideo',
+          data,
+          {
+            headers: {
+                 "Accept": "application/json",
+                'Content-Type': 'multipart/form-data'
+            }
+          } 
+        ).then((response) => {
+
+          this.form.videos.push(response.data.video);
+
+          console.log(this.form.videos);
+        })
+       
+      },
+      deletevideo(index){
+
+        alert(index);
+
+        this.form.videos.splice(index, 1);
+
+        this.form.videos = this.form.videos.slice(index);
+        console.log(this.form.videos);
+      },
+      onChangeinput(){
+
+        if(this.form.name != "" && this.form.title != "" && this.form.gender != ""){
+            this.buttondisable = 'show';
+        }
+        else{
+            this.buttondisable = 'hide';
         }
       }
  }

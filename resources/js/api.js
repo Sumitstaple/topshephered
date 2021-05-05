@@ -62,3 +62,73 @@ return axios.delete(apiurl+'portal/users/'+id, {
              return response;
         })  
 }
+
+export function createpets(data) {
+  return  axios.post(apiurl+'pets/create', data, {
+    header:{
+      "Accept": "application/json",
+     'content-type': 'multipart/form-data'
+    }
+  })
+  .then(response => {
+    return response
+  })
+}
+
+export function getfather() {
+
+return axios.get(apiurl+'pets/petinfo/getfather', {
+
+      })
+      .then(response => {
+            return response;
+      })
+}
+export function getpetbyid(id) {
+
+return axios.get(apiurl+'pets/petinfo/getfather/'+id, {
+
+      })
+      .then(response => {
+            return response;
+      })
+}
+
+export function getmother() {
+
+return axios.get(apiurl+'pets/petinfo/getmother', {
+
+      })
+      .then(response => {
+            return response;
+      })
+}
+
+export function savemotherid(id,petid) {
+
+  var data = {id:id,petid:petid}
+
+return axios.post(apiurl+'pets/petinfo/savemother', data, {
+    header:{
+      "Accept": "application/json",
+     'content-type': 'multipart/form-data'
+    }
+  })
+  .then(response => {
+    return response
+  })
+}
+
+export function savepricepet(data) {
+
+return axios.post(apiurl+'pets/petinfo/saveprice', data, {
+    header:{
+      "Accept": "application/json",
+     'content-type': 'multipart/form-data'
+    }
+  })
+  .then(response => {
+    return response
+  })
+}
+

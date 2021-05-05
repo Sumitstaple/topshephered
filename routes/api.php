@@ -31,6 +31,19 @@ Route::put('/pets/{id}', [App\Http\Controllers\PetsController::class, 'update'])
 Route::get('/pets/{id}/edit', [App\Http\Controllers\PetsController::class, 'edit']);
 Route::delete('/pets/{id}', [App\Http\Controllers\PetsController::class, 'destroy']);
 
+Route::post('/pets/uploadvideo', [App\Http\Controllers\PetsController::class, 'uploadvideo']);
+Route::post('/pets/petinfo/uploadimage', [App\Http\Controllers\PetsController::class, 'uploadimage']);
+Route::post('/pets/saveexternal', [App\Http\Controllers\PetsController::class, 'saveexternal']);
+Route::post('/pets/savecertification', [App\Http\Controllers\PetsController::class, 'savecertification']);
+Route::get('/pets/petinfo/getfather', [App\Http\Controllers\PetsController::class, 'getfather']);
+Route::get('/pets/petinfo/getmother', [App\Http\Controllers\PetsController::class, 'getmother']);
+Route::get('/pets/petinfo/getfather/{id}', [App\Http\Controllers\PetsController::class, 'getfatherbyid']);
+Route::post('/pets/petinfo/savemother', [App\Http\Controllers\PetsController::class, 'savemother']);
+Route::post('/pets/petinfo/savefatherid', [App\Http\Controllers\PetsController::class, 'savefatherid']);
+Route::post('/pets/petinfo/saveprice', [App\Http\Controllers\PetsController::class, 'saveprice']);
+Route::post('/pets/petinfo/savevideos', [App\Http\Controllers\PetsController::class, 'savevideos']);
+Route::post('/pets/petinfo/saveimages', [App\Http\Controllers\PetsController::class, 'saveimages']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

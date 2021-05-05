@@ -53,7 +53,7 @@ class PortalApiController extends Controller
         }
         else{
             return response()->json([
-                'status' => 'fail',
+                'status' => 'fail', 
                 'message' => "Error!"
             ]);
         }

@@ -30,6 +30,14 @@ span#basic-addon3 {
     padding-left: 5px;
     padding-top: 5px;
 }
+
+.videoinput{
+    height: 36px;
+    position: relative;
+    z-index: 9999;
+    opacity: 0;
+}
+
 ul.pet-images {
     margin-bottom: 20px !important;
 }
@@ -39,8 +47,18 @@ div#videos .fa {
 .image-bottom-left.display-flex.align-items-center {
     display: none;
 }
+.videomain{
+    position: relative;
+}
+.iconupload{
+    position: absolute;
+    top: -8px;
+    background: white;
+    width: 100%;
+    z-index: 1;
+}
 ul.pet-images .image-container.position-relative.text-center {
-    margin: auto;
+    /*margin: auto;*/
 }
 
 div#videos .fas {
