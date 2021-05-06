@@ -30,7 +30,7 @@ class CreatePetsTable extends Migration
             $table->string('breedPurpose');
             $table->string('markingsOrColor');
             $table->longText('description');
-            $table->boolean('featured')->nullable();
+            $table->boolean('featured')->default(0);
             $table->json('images')->nullable();
             $table->json('videos')->nullable();
             $table->string('father')->nullable();
@@ -45,7 +45,7 @@ class CreatePetsTable extends Migration
             $table->mediumInteger('fromPrice')->nullable();
             $table->mediumText('notPricedText')->nullable();
             $table->string('priceUnits')->nullable();
-            $table->boolean('visibility')->nullable();
+            $table->boolean('visibility')->default(0);
             $table->timestamps();
         });
     }
