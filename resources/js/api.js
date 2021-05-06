@@ -132,3 +132,21 @@ return axios.post(apiurl+'pets/petinfo/saveprice', data, {
   })
 }
 
+export function getallpets() {
+
+return axios.get(apiurl+'pets/all', {
+
+      })
+      .then(response => {
+            return response;
+      })
+}
+
+export function deletePets(id) {
+return axios.delete(apiurl+'pets/'+id, {
+
+        })
+        .then(response => {
+             return response;
+        })  
+}
