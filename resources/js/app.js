@@ -42,6 +42,7 @@ import ViewAll from './pages/users/ViewAll'
 import EditUser from './pages/users/EditUser'
 import AddPet from './pages/pets/AddPet'
 import EditPet from './pages/pets/EditPet'
+import AllPets from './pages/pets/AllPets'
 
 const routes = [
   {
@@ -67,7 +68,10 @@ const routes = [
   {
       path: '/admin/editpet/:id(\\d+)',
       component: EditPet
-  },
+  },{
+      path: '/admin/allpets',
+      component: AllPets
+  }
   // {
   //     path: '/admin/permissions',
   //     component: Permissions

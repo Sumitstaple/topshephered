@@ -287,7 +287,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>Certification Agency</label><br>
-                                     <b-button v-b-modal.modal-2 class="btn btn-primary btn-sm">Add</b-button>
+                                     <b-button v-b-modal.modal-2 class="btn btn-primary btn-sm" @click="showmodel2">Add</b-button>
                                      <b-modal id="modal-2" title="Add Agency">
                                         
                                         <div class="form-group">
@@ -760,6 +760,8 @@ components: {
             this.form.priceType = data.pets[0].priceType;
             this.form.fixedPrice = data.pets[0].fixedPrice;
             this.form.priceUnits = data.pets[0].priceUnits;
+            this.form.fromPrice = data.pets[0].fromPrice;
+            this.form.toPrice = data.pets[0].toPrice;
             this.showprice = data.pets[0].priceType;
             this.form.notPricedText = data.pets[0].notPricedText;
             this.form.videos = JSON.parse(data.pets[0].videos);
@@ -829,6 +831,7 @@ components: {
       })
       .then(response => {
         if(response.data.status == "success"){
+            this.form.images = this.form.images || [];
             this.form.images.push(response.data.image);
         }
         else{
@@ -836,8 +839,6 @@ components: {
         }
       })
      
-
-
     },
     beforeRemove (index, done, fileList) {
       console.log('index', index, fileList)
@@ -856,12 +857,22 @@ components: {
       console.log('edit data', formData, index, fileList)
     },
     showmodel(){
+        
         this.form.externalAgency = {
             agency:'',
             id:''
         }
     },
+     showmodel2(){
+        
+        this.form.certificationAgency = {
+            agency:'',
+            date:''
+        }
+    },
     hideModal() {
+
+        this.externalAgency = this.externalAgency || [];
 
         this.externalAgency.push({agency:this.form.externalAgency.agency,id:this.form.externalAgency.id});
 
@@ -870,6 +881,7 @@ components: {
         this.$root.$emit('bv::hide::modal', 'modal-1', '#btnShow')
       },
     async saveexternal(){
+        console.log(this.form.externalAgency);
         const id = this.$route.params && this.$route.params.id;
         const data = {id:id,agencies:this.form.externalAgency}
 
@@ -892,7 +904,10 @@ components: {
 
       deleteexternal(index){
         // alert(index);
+        console.log(this.externalAgency);
         this.externalAgency.splice(index, 1);
+        this.form.externalAgency = this.externalAgency;
+        console.log(this.form.externalAgency);
 
         // this.externalAgency = this.externalAgency.slice(index);
 
@@ -910,7 +925,8 @@ components: {
         this.$root.$emit('bv::hide::modal', 'updateexternal', '#btnShow')
       },
       hideModal2() {
-        console.log(this.form.certificationAgency);
+        this.certificationAgency = this.certificationAgency || [];
+
         this.certificationAgency.push({agency:this.form.certificationAgency.agency,date:this.form.certificationAgency.date});
 
         this.form.certificationAgency =  this.certificationAgency;
@@ -945,7 +961,7 @@ components: {
 
       deletecertificate(index){
          this.certificationAgency.splice(index, 1);
-        console.log(this.certificationAgency);
+         this.form.certificationAgency = this.certificationAgency;
 
       },
       editcertificate(agency,date,index){

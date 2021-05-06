@@ -43,7 +43,7 @@ class CreatePetsTable extends Migration
             $table->mediumInteger('fixedPrice')->nullable();
             $table->mediumInteger('toPrice')->nullable();
             $table->mediumInteger('fromPrice')->nullable();
-            $table->mediumInteger('notPricedText')->nullable();
+            $table->mediumText('notPricedText')->nullable();
             $table->string('priceUnits')->nullable();
             $table->boolean('visibility')->nullable();
             $table->timestamps();

@@ -46,6 +46,10 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <router-link class="nav-link" to="/admin/allpets">View All</router-link>
+               
+            </li>
+            <li class="nav-item">
                 <router-link class="nav-link" to="/admin/addnewpet">Add Pet</router-link>
                
             </li>
