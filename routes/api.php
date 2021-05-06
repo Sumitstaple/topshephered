@@ -43,6 +43,8 @@ Route::post('/pets/petinfo/savefatherid', [App\Http\Controllers\PetsController::
 Route::post('/pets/petinfo/saveprice', [App\Http\Controllers\PetsController::class, 'saveprice']);
 Route::post('/pets/petinfo/savevideos', [App\Http\Controllers\PetsController::class, 'savevideos']);
 Route::post('/pets/petinfo/saveimages', [App\Http\Controllers\PetsController::class, 'saveimages']);
+Route::post('/pets/petinfo/setfeatured', [App\Http\Controllers\PetsController::class, 'setfeatured']);
+Route::post('/pets/petinfo/setvisible', [App\Http\Controllers\PetsController::class, 'setvisible']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
