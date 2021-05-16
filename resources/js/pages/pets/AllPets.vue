@@ -32,10 +32,19 @@
  
                 <td><router-link class="nav-link" :to="'/admin/editpet/'+item.id"><i class="fa fa-edit"></i></router-link>
                 <a href="#" v-on:click="deletepet(item.id)"><i class="fa fa-trash"></i></a>
-                <button  class="btn btn-sm btn-success" title="Unmark it from featured">
+                <button v-if="item.featured == 1" class="btn btn-sm btn-primary" :class="{
+      'btn-primary': featuredclass,
+      'btn-success': !featuredclass,
+    }" title="Unmark it from featured" v-on:click="setUnfeatured(item.id)">
                     <i  class="fa fa-star"></i>
                 </button>
-                <button class="btn btn-sm btn-success" title="Mark it invisibile">
+                <button v-if="item.featured == 0" class="btn btn-sm btn-success" title="Mark it featured" v-on:click="setfeatured(item.id)">
+                    <i  class="fa fa-star"></i>
+                </button>
+                <button v-if="item.visibility == 1" class="btn btn-sm btn-primary" title="Mark it invisibile" v-on:click="setInvisible(item.id)">
+                    <i class="fa fa-globe"></i>
+                </button>
+                 <button v-if="item.visibility == 0" class="btn btn-sm btn-success" title="Mark it Visibile" v-on:click="setVisible(item.id)">
                     <i class="fa fa-globe"></i>
                 </button>
                 </td>
@@ -60,6 +69,8 @@ name: 'AllPets',
     return{
         rows: [],
         items: [],
+        visibleclass: '',
+        featuredclass: true,
     }
   },
   mounted(){
@@ -78,12 +89,100 @@ name: 'AllPets',
      const {data} =  await deletePets(id);
 
      if(data.status == "success"){
-        this.$alert("User Deleted Successfully.");
+        this.$alert("Pet Deleted Successfully.");
         this.getallpets();
      }
 
+    },
+
+    async setfeatured(id) {
+        const data = {
+            id:id,
+            featured:1,
+        }
+
+        axios.post(apiurl+'pets/petinfo/setfeatured', data, {
+        header:{
+          "Accept": "application/json",
+        }
+      })
+      .then(response => {
+        if(response.data.status == "success"){
+            this.featuredclass = true;
+            this.$alert('Successfully Mark as Featured');
+        }
+        else{
+            //this.$alert('Error!');
+        }
+        })
     }
- }
+    ,
+
+    async setUnfeatured(id,status) {
+        const data = {
+            id:id,
+            featured:0,
+        }
+
+        axios.post(apiurl+'pets/petinfo/setfeatured', data, {
+        header:{
+          "Accept": "application/json",
+        }
+      })
+      .then(response => {
+        if(response.data.status == "success"){
+            this.featuredclass = false;
+            this.$alert('Successfully Mark as Unfeatured');
+        }
+        else{
+            //this.$alert('Error!');
+        }
+        })
+    },
+
+    async setVisible(id) {
+        const data = {
+            id:id,
+            visibility:1,
+        }
+
+        axios.post(apiurl+'pets/petinfo/setvisible', data, {
+        header:{
+          "Accept": "application/json",
+        }
+      })
+      .then(response => {
+        if(response.data.status == "success"){
+            this.$alert('Successfully Mark as Visible');
+        }
+        else{
+            //this.$alert('Error!');
+        }
+        })
+    }
+    ,
+
+    async setInvisible(id) {
+        const data = {
+            id:id,
+            visibility:0,
+        }
+
+        axios.post(apiurl+'pets/petinfo/setvisible', data, {
+        header:{
+          "Accept": "application/json",
+        }
+      })
+      .then(response => {
+        if(response.data.status == "success"){
+            this.$alert('Successfully Mark as Invisible');
+        }
+        else{
+            //this.$alert('Error!');
+        }
+        })
+    }
+}
 }
 </script>
 

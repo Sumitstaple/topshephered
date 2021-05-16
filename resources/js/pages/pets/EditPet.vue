@@ -540,16 +540,20 @@
                                 
                         </li>
                     </ul>
-                    <div class="imagelist">
-                        <div class="col-md-4" v-for="(item, index) in form.images" :key="">
+                    <div class="imagelist row pb-4">
+
+                        <div class="col-md-3" v-for="(item, index) in form.images" :key="">
                                 <i class="fa fa-trash" v-on:click="deleteimage(index)"></i>
                                 <img :src="'http://127.0.0.1:8000/petimages/'+item" width="100%" height="100%"  />
                                 
-                            </video>
+    
                            </div>
+                        <div class="col-md-12 mt-5">
+                            <button type="button"  v-on:click="saveimages">Save</button>  
+                        </div>
                     </div>    
                 </div>
-                   <button type="button" v-on:click="saveimages">Save</button>           
+                           
             </div>
 
             <div id="videos" class="" v-show="pagetype=='videos'">

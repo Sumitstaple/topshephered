@@ -43,6 +43,20 @@ Route::post('/pets/petinfo/savefatherid', [App\Http\Controllers\PetsController::
 Route::post('/pets/petinfo/saveprice', [App\Http\Controllers\PetsController::class, 'saveprice']);
 Route::post('/pets/petinfo/savevideos', [App\Http\Controllers\PetsController::class, 'savevideos']);
 Route::post('/pets/petinfo/saveimages', [App\Http\Controllers\PetsController::class, 'saveimages']);
+Route::post('/pets/petinfo/setfeatured', [App\Http\Controllers\PetsController::class, 'setfeatured']);
+Route::post('/pets/petinfo/setvisible', [App\Http\Controllers\PetsController::class, 'setvisible']);
+
+
+
+/*Leads apis*/
+
+Route::get('/leads/all', [App\Http\Controllers\leadsController::class, 'index']);
+Route::post('/leads/create', [App\Http\Controllers\leadsController::class, 'store']);
+Route::get('/leads/{id}', [App\Http\Controllers\leadsController::class, 'show']);
+Route::put('/leads/{id}', [App\Http\Controllers\leadsController::class, 'update']);
+Route::get('/leads/{id}/edit', [App\Http\Controllers\leadsController::class, 'edit']);
+Route::delete('/leads/{id}', [App\Http\Controllers\leadsController::class, 'destroy']);
+Route::get('/leads/search/{email}', [App\Http\Controllers\leadsController::class, 'search']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

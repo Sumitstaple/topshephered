@@ -335,4 +335,40 @@ class PetsController extends Controller
        }
 
     }
+
+   public function setfeatured(Request $request){
+
+     $pets = Pets::find($request->id);
+
+     $pets->featured= $request->featured;
+       if($pets->save()){
+            return response()->json([
+                'status' => 'success', 
+            ]);
+       }
+       else{
+            return response()->json([
+                'status' => 'fail'
+            ]);
+       }
+
+   }   
+
+    public function setvisible(Request $request){
+
+     $pets = Pets::find($request->id);
+
+     $pets->visibility= $request->visibility;
+       if($pets->save()){
+            return response()->json([
+                'status' => 'success', 
+            ]);
+       }
+       else{
+            return response()->json([
+                'status' => 'fail'
+            ]);
+       }
+
+   }  
 }
