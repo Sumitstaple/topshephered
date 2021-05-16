@@ -29,6 +29,7 @@ Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
 
+// Vue.config.silent = true;
 
 import Auth from './auth'
 

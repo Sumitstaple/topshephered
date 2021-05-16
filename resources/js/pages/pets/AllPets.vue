@@ -32,7 +32,10 @@
  
                 <td><router-link class="nav-link" :to="'/admin/editpet/'+item.id"><i class="fa fa-edit"></i></router-link>
                 <a href="#" v-on:click="deletepet(item.id)"><i class="fa fa-trash"></i></a>
-                <button v-if="item.featured == 1" class="btn btn-sm btn-primary"  title="Unmark it from featured" v-on:click="setUnfeatured(item.id)">
+                <button v-if="item.featured == 1" class="btn btn-sm btn-primary" :class="{
+      'btn-primary': featuredclass,
+      'btn-success': !featuredclass,
+    }" title="Unmark it from featured" v-on:click="setUnfeatured(item.id)">
                     <i  class="fa fa-star"></i>
                 </button>
                 <button v-if="item.featured == 0" class="btn btn-sm btn-success" title="Mark it featured" v-on:click="setfeatured(item.id)">

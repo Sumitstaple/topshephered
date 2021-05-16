@@ -45,6 +45,7 @@ Route::post('/pets/petinfo/savevideos', [App\Http\Controllers\PetsController::cl
 Route::post('/pets/petinfo/saveimages', [App\Http\Controllers\PetsController::class, 'saveimages']);
 Route::post('/pets/petinfo/setfeatured', [App\Http\Controllers\PetsController::class, 'setfeatured']);
 Route::post('/pets/petinfo/setvisible', [App\Http\Controllers\PetsController::class, 'setvisible']);
+Route::post('/pets/petinfo/uploadcertificate', [App\Http\Controllers\PetsController::class, 'uploadcertificate']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
