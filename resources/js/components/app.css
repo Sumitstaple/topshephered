@@ -1,0 +1,139 @@
+.col-sm-3.sidenav {
+    background: #4e73df;
+}
+.sidenav .dash-logo {
+    border-bottom: 1px solid #ffffff;
+    padding: 40px 0px 20px;
+}
+.custom-header {
+    margin-top: 22px;
+    margin-left: 22px;
+}
+
+.custom-header li.nav-item.active .nav-link {
+    color: #f1c0c7;
+    font-size: 18px;
+}
+.modal-footer {
+    display: none;
+}
+
+.custom-header .sidebar-heading {
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+}
+.nav-tabs li.nav-item {
+    margin-bottom: 7px;
+}
+span#basic-addon3 {
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.videoinput{
+    height: 36px;
+    position: relative;
+    z-index: 9999;
+    opacity: 0;
+}
+
+ul.pet-images {
+    margin-bottom: 20px !important;
+}
+div#videos .fa {
+    font-size: 20px;
+}
+.image-bottom-left.display-flex.align-items-center {
+    display: none;
+}
+.videomain{
+    position: relative;
+}
+.iconupload{
+    position: absolute;
+    top: -8px;
+    background: white;
+    width: 100%;
+    z-index: 1;
+}
+ul.pet-images .image-container.position-relative.text-center {
+    /*margin: auto;*/
+}
+
+div#videos .fas {
+    font-size: 50px;
+}
+ul.pet-images {
+    margin-bottom: 20px;
+}
+.custom-header .nav-item .nav-link {
+    color: #ffffff;
+    font-size: 18px;
+}
+.topheader .nav-item.dropdown.no-arrow:hover .dropdown-menu {
+    display: block;
+}
+.second-section {
+    width: 92%;
+}
+.top-header-heading a {
+    color: #b41c31;
+    font-size: 35px;
+    text-transform: capitalize;
+}
+.pageheader {
+    padding: 20px;
+    margin-bottom: 50px;
+    background: #efefef;
+}
+.mb-4, .my-4 {
+    margin-bottom: 0 !important;
+}
+.col-sm-9 {
+    padding-left: 0;
+}
+.vue-loaders.ball-beat {
+    background: #4e73df47;
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    text-align: center;
+    padding-top: 20%;
+    top: 0;
+    bottom: 0;
+}
+footer.container-fluid {
+    text-align: center;
+    padding: 10px 0px;
+    line-height: 50px;
+    background: #4e73df;
+    color: #fff;
+}
+.container-fluid {
+    padding: 0;
+}
+span.error {
+    color: red;
+    padding: 10px 0px;
+    display: block;
+}
+.pagecontent a {
+    display: inline;
+}
+i.fa.fa-trash {
+    cursor: pointer;
+}
+i.fa.fa-trash {
+    color: red;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.tab-content .form-group {
+    display: inline-block;
+    float: left;
+}
