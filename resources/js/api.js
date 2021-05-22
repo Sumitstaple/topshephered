@@ -150,3 +150,26 @@ return axios.delete(apiurl+'pets/'+id, {
              return response;
         })  
 }
+
+/*Get leads */
+
+export function getallLeads() {
+
+return axios.get(apiurl+'leads/all', {
+
+      })
+      .then(response => {
+            return response;
+      })
+}
+
+/*Delete Leads*/
+export function deleteLeads(id) {
+return axios.delete(apiurl+'leads/'+id, {
+
+        })
+        .then(response => {
+             return response;
+        })  
+}
+

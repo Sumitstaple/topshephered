@@ -29,6 +29,7 @@ Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
 
+// Vue.config.silent = true;
 
 import Auth from './auth'
 
@@ -43,6 +44,7 @@ import EditUser from './pages/users/EditUser'
 import AddPet from './pages/pets/AddPet'
 import EditPet from './pages/pets/EditPet'
 import AllPets from './pages/pets/AllPets'
+import AllLeads from './pages/leads/leads'
 
 const routes = [
   {
@@ -71,6 +73,9 @@ const routes = [
   },{
       path: '/admin/allpets',
       component: AllPets
+  },{
+      path: '/admin/leads',
+      component: AllLeads
   }
   // {
   //     path: '/admin/permissions',

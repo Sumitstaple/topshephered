@@ -57,6 +57,7 @@ Route::put('/leads/{id}', [App\Http\Controllers\leadsController::class, 'update'
 Route::get('/leads/{id}/edit', [App\Http\Controllers\leadsController::class, 'edit']);
 Route::delete('/leads/{id}', [App\Http\Controllers\leadsController::class, 'destroy']);
 Route::get('/leads/search/{email}', [App\Http\Controllers\leadsController::class, 'search']);
+Route::post('/pets/petinfo/uploadcertificate', [App\Http\Controllers\PetsController::class, 'uploadcertificate']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

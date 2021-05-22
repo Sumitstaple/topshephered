@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Leads;
+use Twilio\Rest\Client;
 
 class LeadsController extends Controller
 {
@@ -15,6 +16,10 @@ class LeadsController extends Controller
     }
     public function store(Request $request){
 
+        $sid    = env( 'TWILIO_SID' );
+        $token  = env( 'TWILIO_TOKEN' );
+        $client = new Client( $sid, $token );
+
         $Leads = new Leads();
         $Leads->fname = $request['fname'];
         $Leads->lname= $request['lname'];
@@ -23,6 +28,14 @@ class LeadsController extends Controller
         $Leads->message= $request['message'];
         $Leads->contactnumber= $request['contactnumber'];
         $Leads->save();
+        /* Send Sms */
+        $client->messages->create(
+               $request['contactnumber'],
+               [
+                   'from' => env( 'TWILIO_FROM' ),
+                   'body' => $request['message'],
+               ]
+           );
         return response()->json([
             'status' => 'success',
             'message'=> 'Data added successfully',

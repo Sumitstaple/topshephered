@@ -149,6 +149,26 @@ class PetsController extends Controller
         ]);
         }
     }
+    public function uploadcertificate(Request $request){
+
+        // return $request->video;
+        $certificate = uniqid().'.mp4';
+        $contents = file_get_contents($request->video->path());
+
+        // $newPath = $request->video->store();
+        if(file_put_contents(public_path().'/certificate/'.$certificate, $contents)){
+            return response()->json([
+            'status' => 'success',
+            'certificate'=> $certificate,
+            ]);
+        }
+        else{
+            return response()->json([
+            'status' => 'fail'
+            
+        ]);
+        }
+    }
 
     public function saveexternal(Request $request){  
 

@@ -19,7 +19,7 @@
             <li class="nav-item" role="presentation">
                 <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('certificationagency')">
                     Certification Agency
-                </a>
+                </a> 
             </li>
             <li class="nav-item" role="presentation">
                 <a href="javascript:void(0);" class="nav-link" v-on:click="changetab('addparent')">
@@ -292,6 +292,14 @@
                                         
                                         <div class="form-group">
                                             <div class="col-md-4">
+                                            <label class="required-mark">Certificate*</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                            <input class="form-control input-sm" type="file" name="file" v-on:change="uploadcertificate($event)"/>
+                                        </div>
+                                        </div>
+                                          <div class="form-group">
+                                            <div class="col-md-4">
                                             <label class="required-mark">Agency*</label>
                                             </div>
                                             <div class="col-md-8">
@@ -325,10 +333,11 @@
                                     <tbody>
                                         <tr>
                                            <tr v-for="(item, index) in certificationAgency" :key="">
+                                            <td><img :src="'http://127.0.0.1:8000/certificate/'+item.certificate" width="50px" height="40px" /></td>
                                             <td>{{item.agency}}</td>
                                             <td>{{item.date}}</td>
                                              <td class="text-right">
-                                                <i class="fa fa-edit" v-b-modal.updatecertificate v-on:click="editcertificate(item.agency,item.date,index)"></i>
+                                                <i class="fa fa-edit" v-b-modal.updatecertificate v-on:click="editcertificate(item.certificate,item.agency,item.date,index)"></i>
                                                 <i class="fa fa-trash" v-on:click="deletecertificate(index)"></i>                                       
                                             </td>
                                         </tr>
@@ -337,8 +346,20 @@
                                 </table>
 
                                 <b-modal id="updatecertificate" title="Add Agency">
-                                        
                                         <div class="form-group">
+                                            <div class="col-md-4">
+                                                <img :src="'http://127.0.0.1:8000/certificate/'+this.form.certificationAgency.certificate" width="50px" height="40px" />
+                                            </div>
+                                        </div>        
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                            <label class="required-mark">Certificate*</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                            <input class="form-control input-sm" type="file" name="file" v-on:change="uploadcertificate($event)"/>
+                                        </div>
+                                        </div>
+                                         <div class="form-group">
                                             <div class="col-md-4">
                                             <label class="required-mark">Agency*</label>
                                             </div>
@@ -691,6 +712,7 @@ components: {
                     agency:''
                 }],
                 certificationAgency:[{
+                    certificate:'',
                     date:'',
                     agency:''
                 }],
@@ -819,7 +841,11 @@ components: {
 
         },
         uploadImageSuccess(formData, index, fileList) {
-               
+       
+        // const url = window.URL.createObjectURL(fileList[index].path);
+        //  console.log(url);
+        //  console.log(fileList[index].path);
+        // return false;    
         const petid = this.$route.params && this.$route.params.id;
 
         const data = {
@@ -870,6 +896,7 @@ components: {
      showmodel2(){
         
         this.form.certificationAgency = {
+            certificate:'',
             agency:'',
             date:''
         }
@@ -908,14 +935,12 @@ components: {
 
       deleteexternal(index){
         // alert(index);
-        console.log(this.externalAgency);
-        this.externalAgency.splice(index, 1);
-        this.form.externalAgency = this.externalAgency;
-        console.log(this.form.externalAgency);
-
-        // this.externalAgency = this.externalAgency.slice(index);
-
-        console.log(this.externalAgency);
+        this.$confirm("Are you sure?").then((text) => {
+            if(text == true){
+                this.externalAgency.splice(index, 1);
+                this.form.externalAgency = this.externalAgency;
+            }
+            });
 
       },
       editexternal(agency,id,index){
@@ -931,7 +956,7 @@ components: {
       hideModal2() {
         this.certificationAgency = this.certificationAgency || [];
 
-        this.certificationAgency.push({agency:this.form.certificationAgency.agency,date:this.form.certificationAgency.date});
+        this.certificationAgency.push({certificate:this.form.certificationAgency.certificate,agency:this.form.certificationAgency.agency,date:this.form.certificationAgency.date});
 
         this.form.certificationAgency =  this.certificationAgency;
 
@@ -964,17 +989,24 @@ components: {
       },
 
       deletecertificate(index){
-         this.certificationAgency.splice(index, 1);
-         this.form.certificationAgency = this.certificationAgency;
+         this.$confirm("Are you sure?").then((text) => {
+            if(text == true){
+                this.certificationAgency.splice(index, 1);
+                this.form.certificationAgency = this.certificationAgency;
+            }
+            });
+         
 
       },
-      editcertificate(agency,date,index){
+      editcertificate(certificate,agency,date,index){
         
         this.currentindex = index;
-        this.form.certificationAgency = {agency:agency,date:date};
+        this.form.certificationAgency = {certificate:certificate,agency:agency,date:date};
+
+
       },
       updatecertificate(){
-        this.certificationAgency[this.currentindex] = {agency:this.form.certificationAgency.agency,date:this.form.certificationAgency.id};
+        this.certificationAgency[this.currentindex] = {certificate:this.form.certificationAgency.certificate,agency:this.form.certificationAgency.agency,date:this.form.certificationAgency.id};
         this.form.certificationAgency = this.certificationAgency;
         this.$root.$emit('bv::hide::modal', 'updatecertificate', '#btnShow')
       },
@@ -1004,13 +1036,20 @@ components: {
       },
       deletevideo(index){
 
-        this.form.videos.splice(index, 1);
+        this.$confirm("Are you sure?").then((text) => {
+            if(text == true){
+               this.form.videos.splice(index, 1);
+            }
+        });
 
       },
       deleteimage(index){
 
-        this.form.images.splice(index, 1);
-
+        this.$confirm("Are you sure?").then((text) => {
+            if(text == true){
+               this.form.images.splice(index, 1);
+            }
+        }); 
       },
       onChangeinput(){
 
@@ -1169,7 +1208,39 @@ components: {
             this.$alert('Error!');
         }
       })
-     } 
+     },
+     async uploadcertificate(e){
+        const data = new FormData();
+        data.append('video', e.target.files[0]);
+
+        if(e.target.files[0].size <=  1048576){
+
+            await axios.post( apiurl+'pets/petinfo/uploadcertificate',
+              data,
+              {
+                headers: {
+                     "Accept": "application/json",
+                    'Content-Type': 'multipart/form-data'
+                }
+              } 
+            ).then((response) => {
+               this.form.certificationAgency.certificate= response.data.certificate;
+              console.log(this.form.certificationAgency);
+
+            })
+      }
+      else{
+        this.$fire({
+              title: "Image should be less then 1mb",
+              text: "",
+              type: "warning",
+              timer: 3000
+            }).then(r => {
+              console.log(r);
+            });
+      }
+    }
+    
 
  }
 }
