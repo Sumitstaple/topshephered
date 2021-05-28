@@ -242,8 +242,10 @@
                                             <td>{{item.agency}}</td>
                                             <td>{{item.id}}</td>
                                              <td class="text-right">
-                                                <i class="fa fa-edit" v-b-modal.updateexternal v-on:click="editexternal(item.agency,item.id,index)"></i>
-                                                <i class="fa fa-trash" v-on:click="deleteexternal(index)"></i>                                       
+                                                <font-awesome-icon icon="edit" v-b-modal.updateexternal v-on:click="editexternal(item.agency,item.id,index)"/>
+                                                
+                                                <font-awesome-icon icon="trash" v-on:click="deleteexternal(index)" class="tash"/>
+                                                                                     
                                             </td>
                                         </tr>
                                     </tbody>
@@ -333,12 +335,13 @@
                                     <tbody>
                                         <tr>
                                            <tr v-for="(item, index) in certificationAgency" :key="">
-                                            <td><img :src="'http://127.0.0.1:8000/certificate/'+item.certificate" width="50px" height="40px" /></td>
+                                            <td><img :src="'https://vrsoftcoder.com/topshepered/public/certificate/'+item.certificate" width="50px" height="40px" /></td>
                                             <td>{{item.agency}}</td>
                                             <td>{{item.date}}</td>
                                              <td class="text-right">
-                                                <i class="fa fa-edit" v-b-modal.updatecertificate v-on:click="editcertificate(item.certificate,item.agency,item.date,index)"></i>
-                                                <i class="fa fa-trash" v-on:click="deletecertificate(index)"></i>                                       
+                                             <font-awesome-icon icon="edit" v-b-modal.updatecertificate v-on:click="editcertificate(item.certificate,item.agency,item.date,index)"/>
+                                            <font-awesome-icon icon="trash" class="trash" v-on:click="deletecertificate(index)"/>
+                                                                                    
                                             </td>
                                         </tr>
                                            
@@ -348,7 +351,7 @@
                                 <b-modal id="updatecertificate" title="Add Agency">
                                         <div class="form-group">
                                             <div class="col-md-4">
-                                                <img :src="'http://127.0.0.1:8000/certificate/'+this.form.certificationAgency.certificate" width="50px" height="40px" />
+                                                <img :src="'https://vrsoftcoder.com/topshepered/public/certificate/'+this.form.certificationAgency.certificate" width="50px" height="40px" />
                                             </div>
                                         </div>        
                                         <div class="form-group">
@@ -552,10 +555,10 @@
                           :primaryText="upload" 
                           ></vue-upload-multiple-image>
                                 <span class="star">
-                                    <i class="icon-star"></i>
+                                    <font-awesome-icon icon="star" />
                                 </span>
                                 <span class="trash">
-                                    <i class="icon-trash"></i>
+                                     <font-awesome-icon icon="trash" />
                                 </span>
                             </div>
                                 
@@ -564,8 +567,9 @@
                     <div class="imagelist row pb-4">
 
                         <div class="col-md-3" v-for="(item, index) in form.images" :key="">
-                                <i class="fa fa-trash" v-on:click="deleteimage(index)"></i>
-                                <img :src="'http://127.0.0.1:8000/petimages/'+item" width="100%" height="100%"  />
+                               
+                                <font-awesome-icon icon="trash" class="trash" v-on:click="deleteimage(index)"/>
+                                <img :src="'https://vrsoftcoder.com/topshepered/public/petimages/'+item" width="100%" height="100%"  />
                                 
     
                            </div>
@@ -590,7 +594,8 @@
                             <div class="videomain">
                                 <input type="file" name="video" @change="uploadvideo" class="videoinput">
                                 <div class="iconupload">
-                                <i class="fas fa-video"></i><i class="fa fa-upload" aria-hidden="true"></i>
+                                
+                                <font-awesome-icon icon="video" />
                             </div>
                                 
                             </div>
@@ -600,9 +605,10 @@
                         <h5>Pet Video(s)</h5>
                             <div class="row">
                            <div class="col-md-4" v-for="(item, index) in form.videos" :key="">
-                                <i class="fa fa-trash" v-on:click="deletevideo(index)"></i>
+                                
+                                <font-awesome-icon icon="trash" class="trash" v-on:click="deletevideo(index)"/>
                                 <video width="100%" height="100%" controls>
-                                <source :src="'http://127.0.0.1:8000/videos/'+item" type="video/mp4">
+                                <source :src="'https://vrsoftcoder.com/topshepered/public/videos/'+item" type="video/mp4">
                             </video>
                            </div>
                        </div>
@@ -687,7 +693,9 @@ import {createpets,getfather,savefather,getpetbyid,getmother,savemotherid,savepr
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import axios from 'axios';
 
-var apiurl = 'http://127.0.0.1:8000/api/';
+var apiurl = 'https://vrsoftcoder.com/topshepered/api/';
+//var apiurl = 'http://localhost/portal2/api/';
+
 export default {
 name: 'EditPet',
 components: {

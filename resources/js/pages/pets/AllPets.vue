@@ -20,8 +20,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for='item in items'>
-                <td>{{item.id}}</td>
+            <tr v-for='(item, index) in items'>
+                <td>{{index+1}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.title}}</td>
                 <td>{{item.gender}}</td>
@@ -30,19 +30,22 @@
                 <td>{{item.breedPurpose}}</td> 
                 <td></td> 
  
-                <td><router-link class="nav-link" :to="'/admin/editpet/'+item.id"><i class="fa fa-edit"></i></router-link>
-                <a href="#" v-on:click="deletepet(item.id)"><i class="fa fa-trash"></i></a>
+                <td><router-link class="nav-link" :to="'/topshepered/admin/editpet/'+item.id">
+                <font-awesome-icon icon="edit" />
+                </router-link>
+                <a href="#" v-on:click="deletepet(item.id)" class="trash"><font-awesome-icon icon="trash" /></a>
                 <button v-if="item.featured == 1" class="btn btn-sm btn-primary" title="Unmark it from featured" v-on:click="setUnfeatured(item.id)">
-                    <i  class="fa fa-star"></i>
+                   <font-awesome-icon icon="star" />
                 </button>
                 <button v-if="item.featured == 0" class="btn btn-sm btn-success" title="Mark it featured" v-on:click="setfeatured(item.id)" >
-                    <i  class="fa fa-star"></i>
+                   <font-awesome-icon icon="star" />
                 </button>
                 <button v-if="item.visibility == 1" class="btn btn-sm btn-primary" title="Mark it invisibile" v-on:click="setInvisible(item.id)">
-                    <i class="fa fa-globe"></i>
+                    <font-awesome-icon icon="globe" />
                 </button>
                  <button v-if="item.visibility == 0" class="btn btn-sm btn-success" title="Mark it Visibile" v-on:click="setVisible(item.id)">
-                    <i class="fa fa-globe"></i>
+                 <font-awesome-icon icon="globe" />
+                 
                 </button>
                 </td>
 
@@ -68,7 +71,8 @@
 import {getallpets,deletePets,allpets,getPreallpets}  from '../../api';
 import axios from 'axios';
 
-var apiurl = 'http://127.0.0.1:8000/api/';
+//var apiurl = 'http://localhost/portal2/api/';
+var apiurl = 'https://vrsoftcoder.com/topshepered/api/';
 export default {
 name: 'AllPets',
  data() {
@@ -136,12 +140,12 @@ name: 'AllPets',
      this.items = data.data;
     },
     async deletepet(id){
-
+        // alert(this.limit);
      const {data} =  await deletePets(id);
 
      if(data.status == "success"){
         this.$alert("Pet Deleted Successfully.");
-        this.getallpets();
+         this.allpets();
      }
 
     },

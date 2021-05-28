@@ -1,4 +1,4 @@
-<template>
+    <template>
 <div>
 <div class="pageheader">
     <h2>Add Pet</h2>
@@ -502,7 +502,8 @@ import {createpets}  from '../../api';
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import axios from 'axios';
 
-var apiurl = 'http://127.0.0.1:8000/api/';
+//var apiurl = 'http://localhost/portal2/api/';
+var apiurl = 'https://vrsoftcoder.com/topshepered/api/';
 export default {
 name: 'AddPet',
 components: {
@@ -572,7 +573,7 @@ components: {
 
             const { data } = await createpets(this.form);
            if(data.status == "success"){
-            this.$router.push({ path: `/admin/editpet/${data.data.id}` });
+            this.$router.push({ path: `/topshepered/admin/editpet/${data.data.id}` });
            }
            else{
 

@@ -110,7 +110,7 @@ name: 'EditUser',
             if(data.status == "success"){
                 this.$alert("User Updated Successfully.");
                 this.showloader = false;
-                this.$router.push('viewall');
+                this.$router.push('/topshepered/admin/viewall');
             }
             else{
                 this.$alert("Error");

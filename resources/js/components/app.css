@@ -17,7 +17,15 @@
 .modal-footer {
     display: none;
 }
-
+svg.tash {
+    color: red;
+}
+.fa-edit, .fa-trash{
+    cursor: pointer;
+}
+.trash svg, .trash {
+    color: red;
+}
 .custom-header .sidebar-heading {
     color: #fff;
     font-weight: bold;
@@ -49,6 +57,7 @@ div#videos .fa {
 }
 .videomain{
     position: relative;
+    cursor: pointer;
 }
 .iconupload{
     position: absolute;
@@ -137,3 +146,4 @@ i.fa.fa-trash {
     display: inline-block;
     float: left;
 }
+

@@ -15,7 +15,18 @@ import 'vue-loaders/dist/vue-loaders.css';
 import VueLoaders from 'vue-loaders';
 import VueSimpleAlert from "vue-simple-alert";
 import VueLazyload from 'vue-lazyload'
- 
+ import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret, faGlobe,faStar,faEdit,faTrash,faVideo} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUserSecret)
+library.add(faGlobe)
+library.add(faStar)
+library.add(faEdit)
+library.add(faTrash)
+library.add(faVideo)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueLazyload)
 
  
@@ -53,33 +64,33 @@ import AllLeads from './pages/leads/leads'
 
 const routes = [
   {
-      path: '/admin/',
+      path: '/topshepered/admin/',
       component: Dashboard
   },
   {
-      path: '/admin/addnewusers',
+      path: '/topshepered/admin/addnewusers',
       component: AddNewUser
   },
     {
-      path: '/admin/viewall',
+      path: '/topshepered/admin/viewall',
       component: ViewAll
   },
   {
-      path: '/admin/edituser/:id(\\d+)',
+      path: '/topshepered/admin/edituser/:id(\\d+)',
       component: EditUser
   },
    {
-      path: '/admin/addnewpet',
+      path: '/topshepered/admin/addnewpet',
       component: AddPet
   },
   {
-      path: '/admin/editpet/:id(\\d+)',
+      path: '/topshepered/admin/editpet/:id(\\d+)',
       component: EditPet
   },{
-      path: '/admin/allpets',
+      path: '/topshepered/admin/allpets',
       component: AllPets
   },{
-      path: '/admin/leads',
+      path: '/topshepered/admin/leads',
       component: AllLeads
   }
   // {

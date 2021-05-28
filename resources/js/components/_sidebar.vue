@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <router-link class="nav-link" to="/admin">Dashboard</router-link>
+                <router-link class="nav-link" to="/topshepered/admin">Dashboard</router-link>
                 
             </li>
 
@@ -28,12 +28,12 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <router-link class="nav-link" to="/admin/viewall">View All</router-link>
+                <router-link class="nav-link" to="/topshepered/admin/viewall">View All</router-link>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <router-link class="nav-link" to="/admin/addnewusers">Add New</router-link>
+                <router-link class="nav-link" to="/topshepered/admin/addnewusers">Add New</router-link>
             </li>
 
             <!-- Divider -->
@@ -46,11 +46,11 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <router-link class="nav-link" to="/admin/allpets">View All</router-link>
+                <router-link class="nav-link" to="/topshepered/admin/allpets">View All</router-link>
                
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/admin/addnewpet">Add Pet</router-link>
+                <router-link class="nav-link" to="/topshepered/admin/addnewpet">Add Pet</router-link>
                
             </li>
 
@@ -64,7 +64,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <router-link class="nav-link" to="/admin/leads">View All</router-link>
+                <router-link class="nav-link" to="/topshepered/admin/leads">View All</router-link>
                
             </li>
 

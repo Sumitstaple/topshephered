@@ -140,7 +140,7 @@ name: 'AddNewUser',
             if(data.status == "success"){
                 this.$alert(data.message);
                 this.showloader = false;
-                this.$router.push('viewall');
+                this.$router.push('/topshepered/admin/viewall');
             }
             else{
                 this.$alert(data.message);

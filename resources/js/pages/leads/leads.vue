@@ -28,7 +28,7 @@
                 
  
                 <td>
-                <a href="#" v-on:click="deletepet(item.id)"><i class="fa fa-trash"></i></a>
+                <a href="#" v-on:click="deletepet(item.id)" class="trash"><font-awesome-icon icon="trash" /></i></a>
                 </td>
 
             </tr>
@@ -44,7 +44,8 @@
 import {getallLeads,deleteLeads}  from '../../api';
 import axios from 'axios';
 
-var apiurl = 'http://127.0.0.1:8000/api/';
+//var apiurl = 'http://localhost/portal2/api/';
+var apiurl = 'https://vrsoftcoder.com/topshepered/api/';
 export default {
 name: 'AllLeads',
  data() {

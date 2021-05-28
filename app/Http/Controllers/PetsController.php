@@ -17,7 +17,7 @@ class PetsController extends Controller
     {
 
 
-            $pets = Pets::limit($limit)->skip($limit)->get();
+            $pets = Pets::orderBy('id', 'DESC')->limit($limit)->skip($limit)->get();
 
 
         return response()->json([
@@ -27,7 +27,7 @@ class PetsController extends Controller
 
     public function getallpet(){
 
-        $pets = Pets::limit(10)->get();
+        $pets = Pets::orderBy('id', 'DESC')->limit(10)->get();
         
 
         return response()->json([
@@ -37,11 +37,11 @@ class PetsController extends Controller
     public function getPreallpets($limit){
 
        if($limit <= 0){
-        $pets = Pets::limit(10)->get();
+        $pets = Pets::orderBy('id', 'DESC')->limit(10)->get();
        }
        else{
 
-        $pets = Pets::limit($limit)->skip($limit)->get();
+        $pets = Pets::orderBy('id', 'DESC')->limit($limit)->skip($limit)->get();
        }
 
 
@@ -181,7 +181,7 @@ class PetsController extends Controller
     public function uploadcertificate(Request $request){
 
         // return $request->video;
-        $certificate = uniqid().'.mp4';
+        $certificate = uniqid().'.png';
         $contents = file_get_contents($request->video->path());
 
         // $newPath = $request->video->store();
